@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم المستخدم - نظام إدارة العُهد</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .user-tab-content {
+            display: none;
+        }
+        .user-tab-content.active {
+            display: block;
+        }
+        .user-tab.active {
+            color: #1e40af;
+            border-bottom: 3px solid #1e40af;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-blue-100 min-h-screen">
+
+    <div class="container mx-auto px-4 py-6 max-w-md">
+        <!-- Header -->
+        <div class="bg-white rounded-xl shadow-lg p-4 mb-4 flex justify-between items-center">
+            <div>
+                <h2 class="text-lg font-bold text-blue-800">مرحباً، أحمد محمد</h2>
+                <p class="text-sm text-gray-600">رقم العامل: 12345</p>
+            </div>
+            <button id="userLogoutBtn" class="bg-gray-200 p-2 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-700">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- User Tabs -->
+        <div class="bg-white rounded-xl shadow-lg mb-4">
+            <div class="flex">
+                <button class="user-tab active flex-1 py-3 text-center font-medium" data-tab="userInventory">العُهد الخاصة بي</button>
+                <button class="user-tab flex-1 py-3 text-center font-medium" data-tab="modifyRequest">طلب تعديل عهدة</button>
+            </div>
+        </div>
+
+        <!-- User Inventory Tab Content -->
+        <div id="userInventoryTab" class="user-tab-content active">
+            <div class="bg-white rounded-xl shadow-lg p-4 mb-4">
+                <h3 class="text-md font-bold text-gray-700 mb-2">العُهد الخاصة بي</h3>
+                <div class="space-y-3">
+                    <div class="border border-gray-200 rounded-lg p-3">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-medium">جهاز كمبيوتر HP EliteDesk</div>
+                                <div class="text-sm text-gray-500">رقم الباركود: 10034567</div>
+                            </div>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">سليم</span>
+                        </div>
+                        <div class="mt-2 text-sm text-gray-600">تاريخ الاستلام: 15/06/2022</div>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-3">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-medium">شاشة Dell 24 بوصة</div>
+                                <div class="text-sm text-gray-500">رقم الباركود: 10045678</div>
+                            </div>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">سليم</span>
+                        </div>
+                        <div class="mt-2 text-sm text-gray-600">تاريخ الاستلام: 15/06/2022</div>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-3">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-medium">طابعة HP LaserJet Pro</div>
+                                <div class="text-sm text-gray-500">رقم الباركود: 10067892</div>
+                            </div>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">تحتاج صيانة</span>
+                        </div>
+                        <div class="mt-2 text-sm text-gray-600">تاريخ الاستلام: 20/08/2022</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modify Request Tab Content -->
+        <div id="modifyRequestTab" class="user-tab-content">
+            <div class="bg-white rounded-xl shadow-lg p-4 mb-4">
+                <h3 class="text-md font-bold text-gray-700 mb-4">طلب تعديل عهدة</h3>
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">اختر العهدة</label>
+                        <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option>جهاز كمبيوتر HP EliteDesk (10034567)</option>
+                            <option>شاشة Dell 24 بوصة (10045678)</option>
+                            <option>طابعة HP LaserJet Pro (10067892)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2">وصف التعديل المطلوب</label>
+                        <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="مثال: تغيير حالة العهدة إلى (تحتاج صيانة)"></textarea>
+                    </div>
+                    <button type="button" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition duration-300">إرسال الطلب</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

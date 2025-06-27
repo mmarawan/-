@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم المسؤول - نظام إدارة العُهد</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f0f4f8;
+        }
+
+        .admin-tab-content {
+            display: none;
+        }
+
+        .admin-tab-content.active {
+            display: block;
+        }
+
+        .admin-tab.active {
+            color: #1e40af;
+            border-bottom: 3px solid #1e40af;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-b from-blue-50 to-blue-100 min-h-screen">
+
+    <div class="container mx-auto px-4 py-6 max-w-md">
+        <!-- Header -->
+        <div class="bg-white rounded-xl shadow-lg p-4 mb-4 flex justify-between items-center">
+            <div>
+                <h2 class="text-lg font-bold text-blue-800">مرحباً، محمد أحمد</h2>
+                <p class="text-sm text-gray-600">مسؤول صيانة</p>
+            </div>
+            <button id="adminLogoutBtn" class="bg-gray-200 p-2 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6 text-gray-700">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Admin Tabs -->
+        <div class="bg-white rounded-xl shadow-lg mb-4">
+            <div class="flex">
+                <button class="admin-tab active flex-1 py-3 text-center font-medium"
+                    data-tab="adminInventory">المخزون</button>
+                <button class="admin-tab flex-1 py-3 text-center font-medium" data-tab="adminScan">مسح الباركود</button>
+                <button class="admin-tab flex-1 py-3 text-center font-medium" data-tab="adminReports">التقارير</button>
+            </div>
+        </div>
+
+        <!-- Admin Inventory Tab Content -->
+        <div id="adminInventoryTab" class="admin-tab-content active">
+            <div class="bg-white rounded-xl shadow-lg p-4 mb-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-md font-bold text-gray-700">المخزون</h3>
+                    <button id="addDeviceBtn"
+                        class="bg-blue-600 text-white px-3 py-1 rounded-md text-sm flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-4 h-4 ml-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        إضافة جهاز
+                    </button>
+                </div>
+                <div class="mb-4">
+                    <div class="relative">
+                        <input type="text" placeholder="بحث برقم العامل أو الباركود..."
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button class="absolute left-2 top-2.5 text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex mb-4 overflow-x-auto pb-2">
+                    <button class="whitespace-nowrap px-3 py-1 bg-blue-600 text-white rounded-md ml-2">الكل</button>
+                    <button class="whitespace-nowrap px-3 py-1 bg-gray-200 text-gray-700 rounded-md ml-2">أجهزة
+                        كمبيوتر</button>
+                    <button
+                        class="whitespace-nowrap px-3 py-1 bg-gray-200 text-gray-700 rounded-md ml-2">طابعات</button>
+                    <button class="whitespace-nowrap px-3 py-1 bg-gray-200 text-gray-700 rounded-md">ماسح ضوئي</button>
+                </div>
+                <div class="space-y-3">
+                    <div class="border border-gray-200 rounded-lg p-3">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-medium">جهاز كمبيوتر HP EliteDesk</div>
+                                <div class="text-sm text-gray-500">رقم الباركود: 10034567</div>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="bg-blue-100 text-blue-800 p-1 rounded">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-sm text-gray-600">المستخدم: أحمد محمد (12345)</div>
+                        <div class="mt-1 flex justify-between">
+                            <span class="text-sm text-gray-600">الحالة: <span
+                                    class="text-green-600 font-medium">سليم</span></span>
+                            <span class="text-sm text-gray-600">تاريخ الاستلام : 15/06/2022</span>
+                        </div>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-3">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-medium">شاشة Dell 24 بوصة</div>
+                                <div class="text-sm text-gray-500">رقم الباركود: 10045678</div>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="bg-blue-100 text-blue-800 p-1 rounded">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-sm text-gray-600">المستخدم: أحمد محمد (12345)</div>
+                        <div class="mt-1 flex justify-between">
+                            <span class="text-sm text-gray-600">الحالة: <span
+                                    class="text-green-600 font-medium">سليم</span></span>
+                            <span class="text-sm text-gray-600">تاريخ الاستلام: 15/06/2022</span>
+                        </div>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-3">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <div class="font-medium">طابعة HP LaserJet Pro</div>
+                                <div class="text-sm text-gray-500">رقم الباركود: 10067892</div>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="bg-blue-100 text-blue-800 p-1 rounded">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-2 text-sm text-gray-600">المستخدم: سارة أحمد (23456)</div>
+                        <div class="mt-1 flex justify-between">
+                            <span class="text-sm text-gray-600">الحالة: <span class="text-yellow-600 font-medium">تحتاج
+                                    صيانة</span></span>
+                            <span class="text-sm text-gray-600">تاريخ الاستلام: 20/08/2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- في ملف admin-dashboard.html -->
+            <div id="addDeviceModal"
+                class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+                <div class="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-blue-800">إضافة جهاز جديد</h3>
+                        <button id="closeAddDeviceModal" class="text-gray-500 hover:text-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <form id="addDeviceForm" class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700 text-sm font-medium mb-1">نوع الجهاز</label>
+                            <select
+                                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">اختر نوع الجهاز</option>
+                                <option value="computer">جهاز كمبيوتر</option>
+                                <option value="laptop">لابتوب</option>
+                                <option value="printer">طابعة</option>
+                                <option value="scanner">ماسح ضوئي</option>
+                                <option value="monitor">شاشة</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 text-sm font-medium mb-1">الطراز</label>
+                            <input type="text"
+                                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="أدخل طراز الجهاز">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 text-sm font-medium mb-1">الرقم التسلسلي</label>
+                            <input type="text"
+                                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="أدخل الرقم التسلسلي">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 text-sm font-medium mb-1">تاريخ الاستلام</label>
+                            <input type="date"
+                                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 text-sm font-medium mb-1">المستخدم (رقم العامل)</label>
+                            <input type="text"
+                                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="أدخل رقم العامل" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 text-sm font-medium mb-1">حالة الجهاز</label>
+                            <select
+                                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="good">سليم</option>
+                                <option value="needs_maintenance">يحتاج صيانة</option>
+                            </select>
+                        </div>
+
+                        <div class="flex justify-end space-x-3 space-x-reverse pt-4">
+                            <button type="button" id="cancelAddDevice"
+                                class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                                إلغاء
+                            </button>
+                            <button type="submit"
+                                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                حفظ الجهاز
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Scan Tab Content -->
+        <div id="adminScanTab" class="admin-tab-content">
+            <div class="bg-white rounded-xl shadow-lg p-4 mb-4">
+                <h3 class="text-md font-bold text-gray-700 mb-4">مسح الباركود</h3>
+                <div class="flex flex-col items-center">
+                    <div id="reader"
+                        class="w-full h-64 border-2 border-dashed border-gray-300 rounded-lg mb-4 flex items-center justify-center bg-gray-50">
+                        <div class="text-center text-gray-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-16 h-16 mx-auto text-gray-400 mb-2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75h-.75v-.75z" />
+                            </svg>
+                            <p>اضغط لبدء المسح</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Scan Result Section -->
+                    <div id="scanResultContainer" class="w-full hidden">
+                        <div class="bg-white rounded-xl shadow-lg p-4 mb-4">
+                            <div class="text-center mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-green-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <h3 class="text-xl font-bold text-green-600 mb-1">تم مسح الباركود بنجاح!</h3>
+                                <div id="scannedCode" class="bg-gray-100 p-3 rounded-md font-mono text-lg font-bold">10034567</div>
+                            </div>
+
+                            <div class="border-t border-gray-200 pt-4 mt-4">
+                                <h4 class="text-lg font-bold text-blue-800 mb-3">معلومات الجهاز</h4>
+                                
+                                <div class="grid grid-cols-2 gap-4 mb-4">
+                                    <div>
+                                        <p class="text-sm text-gray-500">نوع الجهاز:</p>
+                                        <p id="deviceType" class="font-medium">جهاز كمبيوتر</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">الطراز:</p>
+                                        <p id="deviceModel" class="font-medium">HP EliteDesk</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">الرقم التسلسلي:</p>
+                                        <p id="deviceSerial" class="font-medium">ELT98765432</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">تاريخ الشراء:</p>
+                                        <p id="devicePurchaseDate" class="font-medium">15/03/2022</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">المستخدم الحالي:</p>
+                                        <p id="deviceUser" class="font-medium">(12345) أحمد محمد</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500">حالة الجهاز:</p>
+                                        <p id="deviceStatus" class="font-medium text-green-600">سليم</p>
+                                    </div>
+                                </div>
+
+                                <div class="mt-6">
+                                    <h5 class="text-md font-bold text-blue-700 mb-2">تحليل المستخدم</h5>
+                                    <div class="bg-blue-50 p-3 rounded-lg">
+                                        <p class="text-sm text-gray-700">عدد الأجهزة المسندة: <span id="assignedDevicesCount">3</span> أجهزة</p>
+                                        <p class="text-sm text-gray-700">تاريخ آخر صيانة: <span id="lastMaintenanceDate">10/06/2025</span></p>
+                                    </div>
+                                </div>
+
+                                <div class="mt-6 border-t border-gray-200 pt-4">
+                                    <h5 class="text-md font-bold text-blue-700 mb-2">المرجع والدعم</h5>
+                                    <div class="flex space-x-3 space-x-reverse">
+                                        <button class="bg-blue-100 text-blue-800 px-3 py-1 rounded-md text-sm">سجل الصيانة</button>
+                                        <button class="bg-blue-100 text-blue-800 px-3 py-1 rounded-md text-sm">نقل الملكية</button>
+                                        <button class="bg-blue-100 text-blue-800 px-3 py-1 rounded-md text-sm">إبلاغ عن مشكلة</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="stopScanBtn" class="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 rounded-lg transition duration-300 mb-4">
+                            إيقاف المسح
+                        </button>
+                    </div>
+                    
+                    <button id="startScanBtn"
+                        class="w-full bg-blue-600 text-white px-4 py-2 rounded-md transition hover:bg-blue-700">بدء
+                        المسح</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Reports Tab Content -->
+        <div id="adminReportsTab" class="admin-tab-content">
+            <div class="bg-white rounded-xl shadow-lg p-4 mb-4">
+                <h3 class="text-md font-bold text-gray-700 mb-4">التقارير</h3>
+                <p class="text-gray-600 text-center">لا توجد تقارير متاحة حالياً.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.admin-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.admin-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all tab contents
+                document.querySelectorAll('.admin-tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show the corresponding tab content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId + 'Tab').classList.add('active');
+            });
+        });
+
+        // Add Device Modal
+        document.getElementById('addDeviceBtn').addEventListener('click', () => {
+            document.getElementById('addDeviceModal').classList.remove('hidden');
+        });
+
+        document.getElementById('closeAddDeviceModal').addEventListener('click', () => {
+            document.getElementById('addDeviceModal').classList.add('hidden');
+        });
+
+        document.getElementById('cancelAddDevice').addEventListener('click', () => {
+            document.getElementById('addDeviceModal').classList.add('hidden');
+        });
+
+        // Barcode Scanning
+        document.getElementById('startScanBtn').addEventListener('click', startScanner);
+        document.getElementById('stopScanBtn').addEventListener('click', stopScanner);
+
+        let html5QrCode;
+
+        function startScanner() {
+            html5QrCode = new Html5Qrcode("reader");
+            
+            html5QrCode.start(
+                { facingMode: "environment" },
+                {
+                    fps: 10,
+                    qrbox: 250
+                },
+                (decodedText, decodedResult) => {
+                    // Mock device data - in real app you would fetch this from your database
+                    const deviceData = {
+                        barcode: "10034567",
+                        type: "جهاز كمبيوتر",
+                        model: "HP EliteDesk",
+                        serial: "ELT98765432",
+                        purchaseDate: "15/03/2022",
+                        user: "(12345) أحمد محمد",
+                        status: "سليم",
+                        assignedDevices: 3,
+                        lastMaintenance: "10/06/2025"
+                    };
+                    
+                    // Display the scanned data
+                    displayScanResults(deviceData);
+                    stopScanner();
+                },
+                (errorMessage) => {
+                    console.error(errorMessage);
+                }
+            ).catch((err) => {
+                console.error(err);
+            });
+
+            document.getElementById('startScanBtn').classList.add('hidden');
+            document.getElementById('reader').classList.remove('hidden');
+            document.getElementById('scanResultContainer').classList.add('hidden');
+        }
+
+        function stopScanner() {
+            if (html5QrCode) {
+                html5QrCode.stop().then(() => {
+                    console.log("Scanner stopped");
+                }).catch((err) => {
+                    console.error("Error stopping scanner", err);
+                });
+            }
+            
+            document.getElementById('startScanBtn').classList.remove('hidden');
+            document.getElementById('scanResultContainer').classList.add('hidden');
+            document.getElementById('reader').classList.add('hidden');
+        }
+
+        function displayScanResults(deviceData) {
+            document.getElementById('scannedCode').textContent = deviceData.barcode;
+            document.getElementById('deviceType').textContent = deviceData.type;
+            document.getElementById('deviceModel').textContent = deviceData.model;
+            document.getElementById('deviceSerial').textContent = deviceData.serial;
+            document.getElementById('devicePurchaseDate').textContent = deviceData.purchaseDate;
+            document.getElementById('deviceUser').textContent = deviceData.user;
+            
+            // Set status color
+            const statusElement = document.getElementById('deviceStatus');
+            statusElement.textContent = deviceData.status;
+            statusElement.className = 'font-medium ' + 
+                (deviceData.status === 'سليم' ? 'text-green-600' : 
+                 deviceData.status === 'يحتاج صيانة' ? 'text-yellow-600' : 'text-red-600');
+            
+            // Update user analysis
+            document.getElementById('assignedDevicesCount').textContent = deviceData.assignedDevices;
+            document.getElementById('lastMaintenanceDate').textContent = deviceData.lastMaintenance;
+            
+            // Show results
+            document.getElementById('scanResultContainer').classList.remove('hidden');
+            document.getElementById('reader').classList.add('hidden');
+            document.getElementById('startScanBtn').classList.add('hidden');
+        }
+    </script>
+</body>
+
+</html>

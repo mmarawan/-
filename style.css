@@ -1,0 +1,29 @@
+/* Custom CSS */
+body {
+    font-family: 'Tajawal', sans-serif;
+}
+
+/* These styles are for elements that might appear across different pages or within dynamically shown/hidden sections */
+/* The .screen.active is no longer needed for top-level screen switching, but kept for consistency if needed for sub-components */
+
+/* This is specifically for the admin dashboard internal tabs */
+.admin-section {
+    display: none;
+}
+
+.admin-section.active {
+    display: block;
+}
+
+/* Styles for user type selection labels */
+.user-type-label.selected {
+    background-color: #ede9fe; /* primary-100 */
+    border-color: #8b5cf6; /* primary-500 */
+    font-weight: 500;
+}
+
+/* Styles for admin navigation buttons */
+.admin-nav-btn.active {
+    border-bottom-color: white;
+    opacity: 1;
+}
