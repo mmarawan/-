@@ -19,13 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     // --- Forgot Password Logic (forgot-password.html) ---
     const forgotPasswordForm = document.getElementById('forgotPasswordForm');
     const verificationSection = document.getElementById('verificationSection');
     const resetPasswordBtn = document.getElementById('resetPasswordBtn');
     const confirmResetBtn = document.getElementById('confirmResetBtn');
-    
+
     if (resetPasswordBtn) {
         resetPasswordBtn.addEventListener('click', () => {
             if (forgotPasswordForm && verificationSection) {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let seconds = timer % 60;
                 seconds = seconds < 10 ? '0' + seconds : seconds;
                 minutes = minutes < 10 ? '0' + minutes : minutes;
-                
+
                 if (timerElement) timerElement.textContent = `${minutes}:${seconds}`;
                 timer--;
 
@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (confirmResetBtn) {
         confirmResetBtn.addEventListener('click', () => {
-             alert('تم تغيير كلمة المرور بنجاح!');
-             navigateTo('index.html');
+            alert('تم تغيير كلمة المرور بنجاح!');
+            navigateTo('index.html');
         });
     }
 
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         userLogoutBtn.addEventListener('click', () => navigateTo('index.html'));
     }
 
-    if(userTabs.length > 0) {
+    if (userTabs.length > 0) {
         userTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 userTabs.forEach(t => t.classList.remove('active'));
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (adminLogoutBtn) {
         adminLogoutBtn.addEventListener('click', () => navigateTo('index.html'));
     }
-    
+
     if (adminTabs.length > 0) {
         adminTabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -155,10 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const onScanSuccess = (decodedText, decodedResult) => {
             scannedCodeElement.textContent = decodedText;
             scanResultContainer.classList.remove('hidden');
-            
+
             // Look up the item in our mock inventory
             const item = mockInventory[decodedText];
-            
+
             if (item) {
                 // Populate the details section
                 document.getElementById('detailItemName').textContent = item.name;
@@ -166,9 +166,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('detailUser').textContent = item.user;
                 const statusEl = document.getElementById('detailStatus');
                 statusEl.textContent = item.status;
-                
+
                 // Reset and apply status colors
-                statusEl.className = 'px-2 py-1 rounded-full text-xs'; 
+                statusEl.className = 'px-2 py-1 rounded-full text-xs';
                 if (item.statusColor === 'green') {
                     statusEl.classList.add('bg-green-100', 'text-green-800');
                 } else if (item.statusColor === 'yellow') {
@@ -187,9 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const onScanFailure = (error) => { /* Ignore */ };
-        
+
         const startScanning = () => {
-             html5QrCode.start(
+            html5QrCode.start(
                 { facingMode: "environment" },
                 { fps: 10, qrbox: { width: 250, height: 250 } },
                 onScanSuccess,
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }).catch(err => {
                 console.error("Failed to start QR code scanner.", err);
                 const readerInfo = readerElement.querySelector('p');
-                if(readerInfo) readerInfo.textContent = 'فشل في تشغيل الكاميرا.';
+                if (readerInfo) readerInfo.textContent = 'فشل في تشغيل الكاميرا.';
             });
         };
 
@@ -221,34 +221,128 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // فتح النموذج
-document.getElementById('addDeviceBtn').addEventListener('click', function() {
-  document.getElementById('addDeviceModal').classList.remove('hidden');
+document.getElementById('addDeviceBtn').addEventListener('click', function () {
+    document.getElementById('addDeviceModal').classList.remove('hidden');
 });
 
 // إغلاق النموذج
-document.getElementById('closeAddDeviceModal').addEventListener('click', function() {
-  document.getElementById('addDeviceModal').classList.add('hidden');
+document.getElementById('closeAddDeviceModal').addEventListener('click', function () {
+    document.getElementById('addDeviceModal').classList.add('hidden');
 });
 
-document.getElementById('cancelAddDevice').addEventListener('click', function() {
-  document.getElementById('addDeviceModal').classList.add('hidden');
+document.getElementById('cancelAddDevice').addEventListener('click', function () {
+    document.getElementById('addDeviceModal').classList.add('hidden');
 });
 
 // إرسال النموذج
-document.getElementById('addDeviceForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  // هنا يمكنك إضافة كود لإرسال البيانات إلى الخادم
-  alert('تمت إضافة الجهاز بنجاح');
-  document.getElementById('addDeviceModal').classList.add('hidden');
-  this.reset();
-  
-  // إعادة تحميل قائمة الأجهزة أو إضافة الجهاز الجديد إلى القائمة
-  loadDevices();
+document.getElementById('addDeviceForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // هنا يمكنك إضافة كود لإرسال البيانات إلى الخادم
+    alert('تمت إضافة الجهاز بنجاح');
+    document.getElementById('addDeviceModal').classList.add('hidden');
+    this.reset();
+
+    // إعادة تحميل قائمة الأجهزة أو إضافة الجهاز الجديد إلى القائمة
+    loadDevices();
 });
 
 // وظيفة مسح الباركود
-document.querySelector('#addDeviceForm button[type="button"]').addEventListener('click', function() {
-  // هنا يمكنك إضافة كود لفتح الماسح الضوئي
-  alert('سيتم فتح ماسح الباركود');
+document.querySelector('#addDeviceForm button[type="button"]').addEventListener('click', function () {
+    // هنا يمكنك إضافة كود لفتح الماسح الضوئي
+    alert('سيتم فتح ماسح الباركود');
+});
+
+// === التحقق من الصحة للنماذج ===
+function validateForm(form) {
+    let isValid = true;
+    const inputs = form.querySelectorAll('[required]');
+
+    inputs.forEach(input => {
+        // إزالة أي رسائل خطأ موجودة مسبقاً
+        const existingError = input.nextElementSibling;
+        if (existingError && existingError.classList.contains('error-message')) {
+            existingError.remove();
+        }
+
+        // التحقق من الحقل
+        if (!input.value.trim()) {
+            showError(input, 'هذا الحقل مطلوب');
+            isValid = false;
+        }
+
+        // تحقق إضافي للحقول الخاصة
+        if (input.type === 'email' && !validateEmail(input.value)) {
+            showError(input, 'البريد الإلكتروني غير صحيح');
+            isValid = false;
+        }
+
+        if (input.id === 'password' && input.value.length < 6) {
+            showError(input, 'كلمة المرور يجب أن تكون 6 أحرف على الأقل');
+            isValid = false;
+        }
+    });
+
+    return isValid;
+}
+
+function showError(input, message) {
+    input.classList.add('border-red-500', 'focus:ring-red-500');
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message text-red-500 text-xs mt-1';
+    errorDiv.textContent = message;
+    input.parentNode.insertBefore(errorDiv, input.nextSibling);
+}
+
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+// === تطبيق التحقق على جميع النماذج ===
+document.addEventListener('DOMContentLoaded', () => {
+    // التحقق عند الإرسال
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function (e) {
+            if (!validateForm(this)) {
+                e.preventDefault();
+            }
+        });
+    });
+
+    // التحقق أثناء الكتابة (Live Validation)
+    document.querySelectorAll('[required]').forEach(input => {
+        input.addEventListener('input', function () {
+            if (this.value.trim()) {
+                this.classList.remove('border-red-500', 'focus:ring-red-500');
+                const errorMsg = this.nextElementSibling;
+                if (errorMsg && errorMsg.classList.contains('error-message')) {
+                    errorMsg.remove();
+                }
+            }
+        });
+    });
+});
+
+// في نهاية ملف script.js
+document.addEventListener('DOMContentLoaded', function () {
+    // زر العودة
+    const adminBackBtn = document.getElementById('adminBackBtn');
+    if (adminBackBtn) {
+        adminBackBtn.addEventListener('click', function () {
+            // يمكنك تغيير هذا الرابط حسب احتياجاتك
+            window.location.href = 'index.html';
+            // أو استخدام history.back() للعودة للصفحة السابقة
+            // history.back();
+        });
+    }
+
+    // زر تسجيل الخروج
+    const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+    if (adminLogoutBtn) {
+        adminLogoutBtn.addEventListener('click', function () {
+            // إضافة أي منطق لتسجيل الخروج هنا
+            window.location.href = 'index.html';
+        });
+    }
 });
