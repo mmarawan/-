@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (confirmResetBtn) {
         confirmResetBtn.addEventListener('click', () => {
              alert('تم تغيير كلمة المرور بنجاح!');
-             navigateTo('login.html');
+             navigateTo('index.html');
         });
     }
 
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (registerBtn) {
         registerBtn.addEventListener('click', () => {
             alert('تم إنشاء الحساب بنجاح! سيتم توجيهك لصفحة تسجيل الدخول.');
-            navigateTo('login.html');
+            navigateTo('index.html');
         });
     }
 
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userTabContents = document.querySelectorAll('.user-tab-content');
 
     if (userLogoutBtn) {
-        userLogoutBtn.addEventListener('click', () => navigateTo('login.html'));
+        userLogoutBtn.addEventListener('click', () => navigateTo('index.html'));
     }
 
     if(userTabs.length > 0) {
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const adminTabContents = document.querySelectorAll('.admin-tab-content');
 
     if (adminLogoutBtn) {
-        adminLogoutBtn.addEventListener('click', () => navigateTo('login.html'));
+        adminLogoutBtn.addEventListener('click', () => navigateTo('index.html'));
     }
     
     if (adminTabs.length > 0) {
