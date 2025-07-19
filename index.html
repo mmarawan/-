@@ -1,107 +1,88 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول - نظام إدارة العُهد</title>
+    <title>نظام إدارة العُهد الشخصية - تسجيل الدخول</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: #f0f4f8;
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        // Tailwind CSS configuration must be present in each HTML file
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f5f3ff',                            100: '#ede9fe',                            200: '#ddd6fe',                            300: '#c4b5fd',                            400: '#a78bfa',                            500: '#8b5cf6',                            600: '#7c3aed',                            700: '#6d28d9',                            800: '#5b21b6',                            900: '#4c1d95',
+                        }
+                    }
+                }
+            }
         }
-    </style>
+    </script>
+    <link rel="stylesheet" href="style.css">
 </head>
-
-<body class="bg-gradient-to-b from-blue-50 to-blue-100 min-h-screen">
-
-    <div class="container mx-auto px-4 py-6 max-w-md flex items-center justify-center min-h-screen">
-
-        <!-- Login Form Section -->
-        <div id="loginSection" class="w-full">
-            <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
-                <div class="flex justify-center mb-6">
-                    <div class="w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-14 h-14 text-white">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
-                        </svg>
-                    </div>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Added a wrapper div for fade transitions -->
+    <div class="fade-screen">
+        <!-- شاشة تسجيل الدخول -->
+        <div id="login-screen" class="min-h-screen flex items-center justify-center py-6 sm:py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 to-primary-100">
+            <div class="max-w-xs sm:max-w-md w-full bg-white rounded-lg shadow-lg p-6 sm:p-8">
+                <div class="text-center">
+                    <h2 class="text-xl sm:text-3xl font-bold text-primary-700 mb-2">نظام إدارة العُهد الشخصية</h2>
+                    <p class="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">قم بتسجيل الدخول للوصول إلى حسابك</p>
                 </div>
-                <h1 class="text-2xl font-bold text-center text-blue-800 mb-6">نظام إدارة العُهد</h1>
-                <div class="mb-6">
-                    <div class="flex justify-center space-x-4 space-x-reverse mb-4">
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="userType" value="user" class="form-radio h-5 w-5 text-blue-600"
-                                checked>
-                            <span class="mr-2 text-gray-700">موظف</span>
-                        </label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="userType" value="admin" class="form-radio h-5 w-5 text-blue-600">
-                            <span class="mr-2 text-gray-700">مسؤول صيانة</span>
-                        </label>
+
+                <div class="mb-4 sm:mb-6">
+                    <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 sm:space-x-reverse mb-4 sm:mb-6">
+                        <div class="user-type-selector">
+                            <input type="radio" id="regular-user" name="user-type" value="regular" class="hidden" checked>
+                            <label for="regular-user" class="block text-center cursor-pointer px-3 py-2 rounded-md border-2 border-primary-300 text-primary-700 hover:bg-primary-50 transition user-type-label selected text-sm">
+                                مستخدم عادي
+                            </label>
+                        </div>
+                        <div class="user-type-selector">
+                            <input type="radio" id="maintenance-admin" name="user-type" value="maintenance" class="hidden">
+                            <label for="maintenance-admin" class="block text-center cursor-pointer px-3 py-2 rounded-md border-2 border-primary-300 text-primary-700 hover:bg-primary-50 transition user-type-label text-sm">
+                                مسؤول صيانة
+                            </label>
+                        </div>
                     </div>
+
+                    <div class="mb-3 sm:mb-4">
+                        <label for="employee-id" class="block text-sm font-medium text-gray-700 mb-1">رقم العامل</label>
+                        <input type="number" id="employee-id" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm" placeholder="أدخل رقم العامل" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                    </div>
+
+                    <div class="mb-4 sm:mb-6">
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">كلمة المرور</label>
+                        <input type="password" id="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm" placeholder="أدخل كلمة المرور">
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-between mb-4 sm:mb-6 space-y-2 sm:space-y-0">
+                        <div class="flex items-center">
+                            <input id="remember-me" type="checkbox" class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
+                            <label for="remember-me" class="mr-2 block text-sm text-gray-700">تذكرني</label>
+                        </div>
+                        <div>
+                            <a href="forgot_password.html" class="text-sm text-primary-600 hover:text-primary-800" id="forgot-password-link">نسيت كلمة المرور؟</a>
+                        </div>
+                    </div>
+
+                    <button id="login-btn" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 text-base">
+                        تسجيل الدخول
+                    </button>
                 </div>
-                <form id="loginForm">
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-medium mb-1">رقم العامل <span
-                                class="text-red-500">*</span></label>
-                        <input type="text" required oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder="أدخل رقم العامل">
-                    </div>
-                    <div class="mb-6">
-                        <label class="block text-gray-700 text-sm font-medium mb-2">كلمة المرور <span
-                                class="text-red-500">*</span></label>
-                        <input type="password" required
-                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder="أدخل كلمة المرور">
-                    </div>
-                    <!-- ... باقي النموذج ... -->
-                    <button type="button" id="loginBtn"
-                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition duration-300">تسجيل
-                        الدخول</button>
-                </form>
-                <div class="mt-4 text-center">
-                    <a href="register.html" class="text-blue-600 hover:text-blue-800 text-sm font-medium">إنشاء حساب
-                        جديد</a>
-                </div>
-                <div class="mt-2 text-center">
-                    <a href="forgot-password.html" class="text-blue-600 hover:text-blue-800 text-sm font-medium">نسيت
-                        كلمة المرور؟</a>
+
+                <div class="text-center">
+                    <p class="text-xs sm:text-sm text-gray-600">
+                        ليس لديك حساب؟
+                        <a href="register.html" class="text-primary-600 hover:text-primary-800 font-medium" id="register-link">إنشاء حساب جديد</a>
+                    </p>
                 </div>
             </div>
         </div>
-
     </div>
-
     <script src="script.js"></script>
-    <!-- في نهاية ملف index.html قبل </body> -->
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const employeeId = document.querySelector('#loginForm input[type="text"]').value;
-            const password = document.querySelector('#loginForm input[type="password"]').value;
-
-            // التحقق من الحقول الإلزامية
-            if (!employeeId || !password) {
-                alert('الرجاء إدخال جميع الحقول المطلوبة');
-                return;
-            }
-
-            // إذا كانت البيانات صحيحة، توجيه المستخدم
-            const userType = document.querySelector('input[name="userType"]:checked').value;
-            if (userType === 'admin') {
-                window.location.href = 'admin-dashboard.html';
-            } else {
-                window.location.href = 'user-dashboard.html';
-            }
-        });
-    </script>
 </body>
-
 </html>

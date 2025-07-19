@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة العُهد الشخصية - لوحة المستخدم</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 300: '#c4b5fd',
+                            400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9',
+                            800: '#5b21b6', 900: '#4c1d95',
+                        }
+                    },
+                    animation: {
+                        'spin-slow': 'spin 2s linear infinite',
+                        'pulse-slow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        @keyframes successCheck {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-check {
+            animation: successCheck 0.7s ease-out forwards;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            max-width: 90%;
+            width: 300px;
+        }
+
+        .popup-overlay.active .popup-content {
+            transform: scale(1);
+        }
+
+        .popup-icon {
+            font-size: 4rem;
+            color: #10B981;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: scale(0);
+            animation: successCheck 0.7s 0.3s ease-out forwards;
+        }
+
+        .popup-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #1F2937;
+        }
+
+        .popup-message {
+            color: #6B7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .popup-close-btn {
+            background-color: #10B981;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .popup-close-btn:hover {
+            background-color: #059669;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <div class="fade-screen">
+        <!-- واجهة المستخدم العادي -->
+        <div id="user-dashboard" class="min-h-screen bg-gray-100">
+            <!-- Header -->
+            <header class="bg-primary-700 text-white shadow-md">
+                <div
+                    class="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center text-center sm:text-right">
+                    <h1 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-0">نظام إدارة العُهد الشخصية</h1>
+                    <div class="flex items-center space-x-2 sm:space-x-4 space-x-reverse">
+                        <span class="text-sm">مرحباً، أحمد محمد</span>
+                        <button id="logout-btn"
+                            class="bg-primary-800 hover:bg-primary-900 px-3 py-1 rounded-md text-xs sm:text-sm transition duration-300">
+                            تسجيل الخروج
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="container mx-auto px-4 py-4 sm:py-6">
+                <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-4 sm:mb-6">
+                    <h2 class="text-lg sm:text-xl font-bold text-primary-700 mb-3 sm:mb-4">العُهد الخاصة بك</h2>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white border border-gray-200 text-sm">
+                            <thead>
+                                <tr class="bg-gray-100">
+                                    <th class="py-2 px-3 sm:px-4 border-b text-right">رقم العهدة</th>
+                                    <th class="py-2 px-3 sm:px-4 border-b text-right">نوع الجهاز</th>
+                                    <th class="py-2 px-3 sm:px-4 border-b text-right">الرقم التسلسلي</th>
+                                    <th class="py-2 px-3 sm:px-4 border-b text-right">تاريخ الاستلام</th>
+                                    <th class="py-2 px-3 sm:px-4 border-b text-right">الحالة</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="fade-in">
+                                    <td class="py-2 px-3 sm:px-4 border-b">001</td>
+                                    <td class="py-2 px-3 sm:px-4 border-b">لابتوب</td>
+                                    <td class="py-2 px-3 sm:px-4 border-b">LT78945612</td>
+                                    <td class="py-2 px-3 sm:px-4 border-b">01/01/2023</td>
+                                    <td class="py-2 px-3 sm:px-4 border-b"><span
+                                            class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">سليم</span>
+                                    </td>
+                                </tr>
+                                <tr class="fade-in">
+                                    <td class="py-2 px-3 sm:px-4 border-b">002</td>
+                                    <td class="py-2 px-3 sm:px-4 border-b">جهاز كمبيوتر</td>
+                                    <td class="py-2 px-3 sm:px-4 border-b">PC45678923</td>
+                                    <td class="py-2 px-3 sm:px-4 border-b">15/03/2023</td>
+                                    <td class="py-2 px-3 sm:px-4 border-b"><span
+                                            class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">سليم</span>
+                                    </td>
+                                </tr>
+                                <tr class="fade-in">
+                                    <td class="py-2 px-3 sm:px-4 border-b">003</td>
+                                    <td class="py-2 px-3 sm:px-4 border-b">طابعة</td>
+                                    <td class="py-2 px-3 sm:px-4 border-b">PR12345678</td>
+                                    <td class="py-2 px-3 sm:px-4 border-b">10/05/2023</td>
+                                    <td class="py-2 px-3 sm:px-4 border-b"><span
+                                            class="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs">تحت
+                                            الصيانة</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
+                    <h2 class="text-lg sm:text-xl font-bold text-primary-700 mb-3 sm:mb-4"> تعديل عهدة </h2>
+                    <form id="issue-report-form" class="space-y-4">
+                        <div class="mb-3 sm:mb-4">
+                            <label for="issue-device" class="block text-sm font-medium text-gray-700 mb-1">اختر
+                                الجهاز</label>
+                            <select id="issue-device"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm"
+                                required>
+                                <option value="">-- اختر الجهاز --</option>
+                                <option value="1">لابتوب - LT78945612</option>
+                                <option value="2">جهاز كمبيوتر - PC45678923</option>
+                                <option value="3">طابعة - PR12345678</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3 sm:mb-4">
+                            <label for="receipt-upload" class="block text-sm font-medium text-gray-700 mb-1">إرفاق إيصال
+                                الاستلام</label>
+                            <div class="flex items-center">
+                                <input type="file" id="receipt-upload" class="hidden" accept=".pdf,.jpg,.jpeg,.png">
+                                <input type="text" id="receipt-file-name"
+                                    class="flex-grow px-3 py-2 border border-gray-300 rounded-r-md text-sm"
+                                    placeholder="لم يتم اختيار ملف" readonly>
+                                <button type="button" onclick="document.getElementById('receipt-upload').click()"
+                                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-2 rounded-l-md border border-gray-300 text-sm">
+                                    اختر ملف
+                                </button>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1">يجب أن يكون الملف من نوع PDF, JPG, أو PNG</p>
+                        </div>
+                        <div class="mb-3 sm:mb-4">
+                            <label for="issue-notes"
+                                class="block text-sm font-medium text-gray-700 mb-1">ملاحظات</label>
+                            <textarea id="issue-notes" rows="3"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm"
+                                placeholder="أدخل ملاحظاتك هنا" required></textarea>
+                        </div>
+
+                        <div class="relative">
+                            <button type="submit" id="submit-issue"
+                                class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 text-sm">
+                                <span id="submit-text">إرسال</span>
+                                <span id="submit-loading" class="hidden items-center justify-center">
+                                    <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                            stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor"
+                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                        </path>
+                                    </svg>
+                                    جاري الإرسال...
+                                </span>
+                            </button>
+
+                            <div id="success-message"
+                                class="hidden absolute inset-0 bg-green-500 text-white rounded-md flex items-center justify-center success-check">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                تم الإرسال بنجاح
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+    <!-- Popup Success Message -->
+    <div id="popup-overlay" class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd" />
+                </svg>
+            </div>
+            <h3 class="popup-title">تم بنجاح!</h3>
+            <p class="popup-message">تم إرسال البلاغ بنجاح</p>
+            <button id="popup-close-btn" class="popup-close-btn">حسناً</button>
+        </div>
+    </div>
+
+    <script>
+        // عرض أسماء الملفات المختارة
+        document.getElementById('receipt-upload').addEventListener('change', function (e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : 'لم يتم اختيار ملف';
+            document.getElementById('receipt-file-name').value = fileName;
+        });
+
+        // معالجة إرسال النموذج مع Popup
+        document.getElementById('issue-report-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submit-issue');
+            const submitText = document.getElementById('submit-text');
+            const submitLoading = document.getElementById('submit-loading');
+            const popupOverlay = document.getElementById('popup-overlay');
+
+            // عرض حالة التحميل
+            submitText.classList.add('hidden');
+            submitLoading.classList.remove('hidden');
+            submitBtn.disabled = true;
+
+            // محاكاة إرسال البيانات إلى الخادم
+            setTimeout(() => {
+                submitLoading.classList.add('hidden');
+
+                // عرض Popup النجاح
+                popupOverlay.classList.add('active');
+
+                // إعادة تعيين النموذج عند إغلاق الـ Popup
+                document.getElementById('popup-close-btn').addEventListener('click', function () {
+                    popupOverlay.classList.remove('active');
+                    submitText.classList.remove('hidden');
+                    submitBtn.disabled = false;
+                    e.target.reset();
+                    document.getElementById('receipt-file-name').value = '';
+                }, { once: true }); // يتم تشغيل الحدث مرة واحدة فقط
+            }, 2000);
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

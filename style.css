@@ -17,8 +17,10 @@ body {
 
 /* Styles for user type selection labels */
 .user-type-label.selected {
-    background-color: #ede9fe; /* primary-100 */
-    border-color: #8b5cf6; /* primary-500 */
+    background-color: #ede9fe;
+    /* primary-100 */
+    border-color: #8b5cf6;
+    /* primary-500 */
     font-weight: 500;
 }
 
@@ -26,4 +28,55 @@ body {
 .admin-nav-btn.active {
     border-bottom-color: white;
     opacity: 1;
+}
+
+/* تحسين مظهر حقل البحث */
+#inventory-search {
+    padding-right: 2.5rem;
+}
+
+/* تنسيق زر الباركود */
+#barcode-search-btn {
+    transition: all 0.3s ease;
+    margin-right: 0.5rem;
+}
+
+#barcode-search-btn:hover {
+    background-color: #e5e7eb;
+    transform: scale(1.05);
+}
+
+/* أيقونة البحث */
+.search-icon {
+    right: 0.75rem;
+    left: auto;
+}
+
+/* Ensure charts have proper dimensions */
+.chart-container {
+    position: relative;
+    height: 250px;
+    width: 100%;
+    direction: ltr;
+    /* Charts work better with LTR direction */
+}
+
+/* Fix for RTL layout */
+canvas {
+    display: block;
+    margin: 0 auto;
+}
+
+/* إضافة أي أنماط إضافية مطلوبة */
+#central-filter {
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    border-width: 1px;
+    border-color: #d1d5db;
+}
+
+#central-filter:focus {
+    outline: none;
+    kerning: 2px;
+    lighting-color: #8b5cf6;
 }
