@@ -15,7 +15,9 @@
                 extend: {
                     colors: {
                         primary: {
-                            50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 300: '#c4b5fd', 400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9', 800: '#5b21b6', 900: '#4c1d95',
+                            50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 300: '#c4b5fd',
+                            400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9',
+                            800: '#5b21b6', 900: '#4c1d95',
                         }
                     }
                 }
@@ -97,7 +99,7 @@
                 <div id="inventory-section" class="admin-section active">
                     <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-4 sm:mb-6">
                         <div class="flex flex-col sm:flex-row justify-between items-center mb-3 sm:mb-4">
-                            <h2 class="text-lg sm:text-xl font-bold text-primary-700 mb-3 sm:mb-4">إدارة الجرد حسب السنترال</h2>
+                            <h2 class="text-lg sm:text-xl font-bold text-primary-700 mb-3 sm:mb-4">إدارة الجرد</h2>
                             <button id="add-inventory-btn" class="bg-primary-600 hover:bg-primary-700 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md transition duration-300 flex items-center text-sm sm:text-base">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
@@ -108,19 +110,18 @@
 
                         <!-- فلتر السنترال -->
                         <div class="mb-4">
-                            <label for="central-filter" class="block text-sm font-medium text-gray-700 mb-1">اختر السنترال</label>
-                            <select id="central-filter" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm">
+                            <label for="user-filter" class="block text-sm font-medium text-gray-700 mb-1">اختر المستخدم</label>
+                            <select id="user-filter" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm">
                                 <option value="all">الكل</option>
-                                <option value="سنترال 1">سنترال 1</option>
-                                <option value="سنترال 2">سنترال 2</option>
-                                <option value="سنترال 3">سنترال 3</option>
-                                <option value="سنترال 4">سنترال 4</option>
+                                <option value="أحمد محمد">أحمد محمد</option>
+                                <option value="محمد أحمد">محمد أحمد</option>
+                                <option value="علي محمود">علي محمود</option>
                             </select>
                         </div>
 
                         <div class="mb-3 sm:mb-4 flex items-center">
                             <div class="relative flex-grow">
-                                <input type="text" id="inventory-search" class="w-full px-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm" placeholder="ابحث برقم العامل...">
+                                <input type="text" id="inventory-search" class="w-full px-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm" placeholder="ابحث برقم العامل أو الرقم التسلسلي...">
                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
@@ -138,12 +139,12 @@
                             <table class="min-w-full bg-white border border-gray-200 text-sm">
                                 <thead>
                                     <tr class="bg-gray-100">
-                                        <th class="py-2 px-3 sm:px-4 border-b text-right">رقم العامل</th>
+                                        <th class="py-2 px-3 sm:px-4 border-b text-right">اسم المستخدم</th>
                                         <th class="py-2 px-3 sm:px-4 border-b text-right">نوع الجهاز</th>
                                         <th class="py-2 px-3 sm:px-4 border-b text-right">الموديل</th>
                                         <th class="py-2 px-3 sm:px-4 border-b text-right">الرقم التسلسلي</th>
                                         <th class="py-2 px-3 sm:px-4 border-b text-right">الحالة</th>
-                                        <th class="py-2 px-3 sm:px-4 border-b text-right">السنترال</th>
+                                        <th class="py-2 px-3 sm:px-4 border-b text-right">حالة الجرد</th>
                                         <th class="py-2 px-3 sm:px-4 border-b text-right">الإجراءات</th>
                                     </tr>
                                 </thead>
@@ -163,7 +164,14 @@
                         </button>
                         <div class="text-center mb-4">
                             <h3 class="text-xl font-bold text-primary-700">تخريد الجهاز</h3>
-                            <p class="text-sm text-gray-600 mt-1">رقم الجهاز: <span id="scrap-device-id" class="font-medium"></span></p>
+                            <div class="bg-gray-50 p-3 rounded-md border border-gray-200 mt-2 text-right">
+                                <p class="font-medium text-gray-700 mb-1">معلومات العهدة</p>
+                                <p><span class="text-gray-600">اسم المستخدم:</span> <span id="scrap-user-name"></span></p>
+                                <p><span class="text-gray-600">نوع الجهاز:</span> <span id="scrap-device-type"></span></p>
+                                <p><span class="text-gray-600">الموديل:</span> <span id="scrap-device-model"></span></p>
+                                <p><span class="text-gray-600">الرقم التسلسلي:</span> <span id="scrap-device-serial"></span></p>
+                                <p><span class="text-gray-600">الحالة:</span> <span id="scrap-device-status"></span></p>
+                            </div>
                         </div>
 
                         <form id="scrapForm" class="space-y-4 text-sm">
@@ -329,14 +337,12 @@
                         <label for="new-device-status" class="block text-gray-700 font-medium mb-1">الحالة</label>
                         <select id="new-device-status" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
                             <option value="">-- اختر الحالة --</option>
-                            <option value="available">متاح</option>
                             <option value="in-use">مستخدم</option>
                             <option value="maintenance">تحت الصيانة</option>
-                            <option value="defective">معطل</option>
                         </select>
                     </div>
                     <div>
-                        <label for="new-device-user" class="block text-gray-700 font-medium mb-1">المستخدم (رقم العامل)</label>
+                        <label for="new-device-user" class="block text-gray-700 font-medium mb-1">المستخدم (اسم المستخدم)</label>
                         <input type="text" id="new-device-user" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="أدخل اسم المستخدم الحالي (اختياري)">
                     </div>
                     <div>
@@ -386,13 +392,12 @@
                         <select id="edit-device-status" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500" required>
                             <option value="in-use">مستخدم</option>
                             <option value="maintenance">تحت الصيانة</option>
-                            <option value="available">متاح</option>
                         </select>
                     </div>
 
                     <div>
-                        <label for="edit-device-user" class="block text-gray-700 font-medium mb-1">رقم العامل *</label>
-                        <input type="text" id="edit-device-user" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="أدخل رقم العامل" required>
+                        <label for="edit-device-user" class="block text-gray-700 font-medium mb-1">اسم المستخدم *</label>
+                        <input type="text" id="edit-device-user" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="أدخل اسم المستخدم" required>
                     </div>
 
                     <div>
@@ -418,44 +423,6 @@
                 </form>
             </div>
         </div>
-
-        <!-- Inventory Confirmation Modal -->
-        <div id="inventoryConfirmModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4 sm:p-6 z-50 hidden">
-            <div class="bg-white rounded-lg shadow-xl w-full max-w-sm sm:max-w-md p-6 relative">
-                <button id="closeInventoryConfirmModal" class="absolute top-3 left-3 text-gray-500 hover:text-gray-700 text-2xl font-bold">
-                    &times;
-                </button>
-                <div class="text-center mb-4">
-                    <h3 class="text-xl font-bold text-primary-700">تأكيد الجرد</h3>
-                    <p class="text-sm text-gray-600 mt-2">هل أنت متأكد أنك تريد جرد هذا الجهاز وحذفه من المخزون؟</p>
-                </div>
-
-                <div class="flex justify-between mt-6 space-x-4 space-x-reverse">
-                    <button type="button" id="cancelInventory" class="w-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-md transition duration-300">
-                        إلغاء
-                    </button>
-                    <button type="button" id="confirmInventory" class="w-1/2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">
-                        تأكيد الجرد
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Inventory Success Modal -->
-        <div id="inventorySuccessModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4 sm:p-6 z-50 hidden">
-            <div class="bg-white rounded-lg shadow-xl w-full max-w-sm sm:max-w-md p-6 relative text-center">
-                <div class="mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <h3 class="text-xl font-bold text-primary-700 mt-2">تم الجرد بنجاح</h3>
-                    <p class="text-sm text-gray-600 mt-1">تم حذف الجهاز من المخزون</p>
-                </div>
-                <button type="button" id="closeInventorySuccess" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-md transition duration-300">
-                    موافق
-                </button>
-            </div>
-        </div>
     </div>
 
     <script>
@@ -476,8 +443,7 @@
                 model: 'HP ProBook 450 G8',
                 serial: 'LT78945612',
                 status: 'in-use',
-                employeeId: '12345',
-                central: 'سنترال 1',
+                user: 'أحمد محمد',
                 notes: ''
             },
             {
@@ -486,8 +452,7 @@
                 model: 'Dell OptiPlex 7080',
                 serial: 'PC45678923',
                 status: 'in-use',
-                employeeId: '54321',
-                central: 'سنترال 2',
+                user: 'محمد أحمد',
                 notes: ''
             },
             {
@@ -496,8 +461,7 @@
                 model: 'HP LaserJet Pro M404dn',
                 serial: 'PR12345678',
                 status: 'maintenance',
-                employeeId: '98765',
-                central: 'سنترال 3',
+                user: 'علي محمود',
                 notes: 'تحت الصيانة'
             }
         ];
@@ -521,28 +485,22 @@
                         statusClass = 'bg-yellow-100 text-yellow-800';
                         statusText = 'تحت الصيانة';
                         break;
-                    case 'available':
-                        statusClass = 'bg-blue-100 text-blue-800';
-                        statusText = 'متاح';
-                        break;
-                    case 'defective':
-                        statusClass = 'bg-red-100 text-red-800';
-                        statusText = 'معطل';
-                        break;
                     default:
                         statusClass = 'bg-gray-100 text-gray-800';
                         statusText = 'غير معروف';
                 }
 
                 row.innerHTML = `
-                    <td class="py-2 px-3 sm:px-4 border-b">${device.employeeId || '---'}</td>
+                    <td class="py-2 px-3 sm:px-4 border-b">${device.user || '---'}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">${getDeviceTypeName(device.type)}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">${device.model}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">${device.serial}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">
                         <span class="px-2 py-1 ${statusClass} rounded-full text-xs">${statusText}</span>
                     </td>
-                    <td class="py-2 px-3 sm:px-4 border-b">${device.central || 'غير محدد'}</td>
+                    <td class="py-2 px-3 sm:px-4 border-b text-center">
+                        <input type="checkbox" class="inventory-checkbox h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500">
+                    </td>
                     <td class="py-2 px-3 sm:px-4 border-b">
                         <div class="flex space-x-2 space-x-reverse">
                             <button class="edit-device-btn bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-xs" 
@@ -572,21 +530,29 @@
             return types[type] || type;
         }
 
-        // فلترة حسب السنترال
-        document.getElementById('central-filter').addEventListener('change', function() {
-            const selectedCentral = this.value;
-            if (selectedCentral === 'all') {
+        // فلترة حسب المستخدم
+        document.getElementById('user-filter').addEventListener('change', function() {
+            const selectedUser = this.value;
+            if (selectedUser === 'all') {
                 displayInventory();
             } else {
                 const filteredDevices = devicesData.filter(device => 
-                    device.central && device.central.includes(selectedCentral)
+                    device.user && device.user.includes(selectedUser)
                 );
                 renderFilteredInventory(filteredDevices);
             }
         });
 
-        function renderFilteredInventory(filteredDevices) {
+        function renderFilteredInventory(filteredDevices, searchTerm = '') {
             inventoryTableBody.innerHTML = '';
+            
+            if (searchTerm) {
+                filteredDevices = filteredDevices.filter(device => 
+                    (device.user && device.user.includes(searchTerm)) || 
+                    (device.serial && device.serial.includes(searchTerm))
+                );
+            }
+
             filteredDevices.forEach(device => {
                 const row = document.createElement('tr');
                 row.setAttribute('data-device-id', device.id);
@@ -601,28 +567,22 @@
                         statusClass = 'bg-yellow-100 text-yellow-800';
                         statusText = 'تحت الصيانة';
                         break;
-                    case 'available':
-                        statusClass = 'bg-blue-100 text-blue-800';
-                        statusText = 'متاح';
-                        break;
-                    case 'defective':
-                        statusClass = 'bg-red-100 text-red-800';
-                        statusText = 'معطل';
-                        break;
                     default:
                         statusClass = 'bg-gray-100 text-gray-800';
                         statusText = 'غير معروف';
                 }
 
                 row.innerHTML = `
-                    <td class="py-2 px-3 sm:px-4 border-b">${device.employeeId || '---'}</td>
+                    <td class="py-2 px-3 sm:px-4 border-b">${device.user || '---'}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">${getDeviceTypeName(device.type)}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">${device.model}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">${device.serial}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">
                         <span class="px-2 py-1 ${statusClass} rounded-full text-xs">${statusText}</span>
                     </td>
-                    <td class="py-2 px-3 sm:px-4 border-b">${device.central || 'غير محدد'}</td>
+                    <td class="py-2 px-3 sm:px-4 border-b text-center">
+                        <input type="checkbox" class="inventory-checkbox h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500">
+                    </td>
                     <td class="py-2 px-3 sm:px-4 border-b">
                         <div class="flex space-x-2 space-x-reverse">
                             <button class="edit-device-btn bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-xs" 
@@ -642,35 +602,52 @@
         // البحث عن الأجهزة
         document.getElementById('inventory-search').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
-            if (searchTerm.length > 0) {
-                const filteredDevices = devicesData.filter(device => 
-                    device.employeeId && device.employeeId.includes(searchTerm)
-                );
-                renderFilteredInventory(filteredDevices);
-            } else {
-                displayInventory();
-            }
+            const selectedUser = document.getElementById('user-filter').value;
+            
+            let filteredDevices = selectedUser === 'all' ? devicesData : 
+                devicesData.filter(d => d.user && d.user.includes(selectedUser));
+            
+            renderFilteredInventory(filteredDevices, searchTerm);
         });
 
-        // عرض نموذج تأكيد الجرد
-        function showInventoryConfirmModal(deviceId) {
-            currentInventoryDeviceId = deviceId;
-            document.getElementById('inventoryConfirmModal').classList.remove('hidden');
+        // عرض نموذج تأكيد التخريد
+        function showScrapModal(deviceId) {
+            currentScrapDeviceId = deviceId;
+            const device = devicesData.find(d => d.id === deviceId);
+            
+            if (device) {
+                document.getElementById('scrap-device-id').textContent = device.id;
+                document.getElementById('scrap-user-name').textContent = device.user || '---';
+                document.getElementById('scrap-device-type').textContent = getDeviceTypeName(device.type);
+                document.getElementById('scrap-device-model').textContent = device.model;
+                document.getElementById('scrap-device-serial').textContent = device.serial;
+                
+                let statusText;
+                switch (device.status) {
+                    case 'in-use': statusText = 'مستخدم'; break;
+                    case 'maintenance': statusText = 'تحت الصيانة'; break;
+                    default: statusText = device.status;
+                }
+                document.getElementById('scrap-device-status').textContent = statusText;
+            }
+            
+            document.getElementById('scrapModal').classList.remove('hidden');
         }
 
-        // إخفاء نموذج تأكيد الجرد
-        function hideInventoryConfirmModal() {
-            document.getElementById('inventoryConfirmModal').classList.add('hidden');
+        // إخفاء نموذج التخريد
+        function hideScrapModal() {
+            document.getElementById('scrapModal').classList.add('hidden');
+            document.getElementById('scrapForm').reset();
         }
 
-        // عرض نموذج نجاح الجرد
-        function showInventorySuccessModal() {
-            document.getElementById('inventorySuccessModal').classList.remove('hidden');
+        // عرض نموذج نجاح التخريد
+        function showScrapSuccessModal() {
+            document.getElementById('scrapSuccessModal').classList.remove('hidden');
         }
 
-        // إخفاء نموذج نجاح الجرد
-        function hideInventorySuccessModal() {
-            document.getElementById('inventorySuccessModal').classList.add('hidden');
+        // إخفاء نموذج نجاح التخريد
+        function hideScrapSuccessModal() {
+            document.getElementById('scrapSuccessModal').classList.add('hidden');
         }
 
         // عرض نموذج إضافة جهاز جديد
@@ -695,7 +672,7 @@
                 document.getElementById('edit-device-model-display').textContent = device.model;
                 document.getElementById('edit-device-serial-display').textContent = device.serial;
                 document.getElementById('edit-device-status').value = device.status;
-                document.getElementById('edit-device-user').value = device.employeeId || '';
+                document.getElementById('edit-device-user').value = device.user || '';
                 document.getElementById('editDeviceModal').classList.remove('hidden');
             }
         }
@@ -704,29 +681,6 @@
         function hideEditDeviceModal() {
             document.getElementById('editDeviceModal').classList.add('hidden');
             document.getElementById('editDeviceForm').reset();
-        }
-
-        // عرض نموذج التخريد
-        function showScrapModal(deviceId) {
-            currentScrapDeviceId = deviceId;
-            document.getElementById('scrap-device-id').textContent = deviceId;
-            document.getElementById('scrapModal').classList.remove('hidden');
-        }
-
-        // إخفاء نموذج التخريد
-        function hideScrapModal() {
-            document.getElementById('scrapModal').classList.add('hidden');
-            document.getElementById('scrapForm').reset();
-        }
-
-        // عرض نموذج نجاح التخريد
-        function showScrapSuccessModal() {
-            document.getElementById('scrapSuccessModal').classList.remove('hidden');
-        }
-
-        // إخفاء نموذج نجاح التخريد
-        function hideScrapSuccessModal() {
-            document.getElementById('scrapSuccessModal').classList.add('hidden');
         }
 
         // حذف الجهاز من المخزون
@@ -821,13 +775,11 @@
                     switch (device.status) {
                         case 'in-use': statusText = 'مستخدم'; break;
                         case 'maintenance': statusText = 'تحت الصيانة'; break;
-                        case 'available': statusText = 'متاح'; break;
-                        case 'defective': statusText = 'معطل'; break;
                         default: statusText = 'غير معروف';
                     }
                     
                     document.getElementById('scanned-status').textContent = statusText;
-                    document.getElementById('scanned-current-user').textContent = device.employeeId || '---';
+                    document.getElementById('scanned-current-user').textContent = device.user || '---';
                 } else {
                     document.getElementById('scanned-device-type').textContent = '-';
                     document.getElementById('scanned-model').textContent = '-';
@@ -854,15 +806,13 @@
             deviceStatusChart = new Chart(statusCtx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['مستخدم', 'متاح', 'تحت الصيانة', 'معطل'],
+                    labels: ['مستخدم', 'تحت الصيانة'],
                     datasets: [{
                         data: [
                             devicesData.filter(d => d.status === 'in-use').length,
-                            devicesData.filter(d => d.status === 'available').length,
-                            devicesData.filter(d => d.status === 'maintenance').length,
-                            devicesData.filter(d => d.status === 'defective').length
+                            devicesData.filter(d => d.status === 'maintenance').length
                         ],
-                        backgroundColor: ['#10B981', '#3B82F6', '#F59E0B', '#EF4444'],
+                        backgroundColor: ['#10B981', '#F59E0B'],
                         borderWidth: 1
                     }]
                 },
@@ -945,19 +895,14 @@
 
             // معالجة النقر على أزرار الجرد
             document.addEventListener('click', function(e) {
-                if (e.target.classList.contains('inventory-btn')) {
+                if (e.target.classList.contains('scrap-btn')) {
                     const deviceId = e.target.closest('tr').getAttribute('data-device-id');
-                    showInventoryConfirmModal(deviceId);
+                    showScrapModal(deviceId);
                 }
 
                 if (e.target.classList.contains('edit-device-btn')) {
                     const deviceId = e.target.closest('tr').getAttribute('data-device-id');
                     showEditDeviceModal(deviceId);
-                }
-
-                if (e.target.classList.contains('scrap-btn')) {
-                    const deviceId = e.target.closest('tr').getAttribute('data-device-id');
-                    showScrapModal(deviceId);
                 }
 
                 if (e.target.classList.contains('admin-nav-btn')) {
@@ -966,24 +911,31 @@
                 }
             });
 
-            // معالجة تأكيد الجرد
-            document.getElementById('confirmInventory').addEventListener('click', function() {
-                if (currentInventoryDeviceId) {
-                    scrapDevice(currentInventoryDeviceId);
-                    hideInventoryConfirmModal();
-                    showInventorySuccessModal();
+            // معالجة تأكيد التخريد
+            document.getElementById('confirmScrap').addEventListener('click', function(e) {
+                e.preventDefault();
+                const receiptFile = document.getElementById('scrap-receipt').files[0];
+                if (!receiptFile) {
+                    alert('الرجاء إرفاق إيصال التخريد');
+                    return;
+                }
+
+                if (currentScrapDeviceId) {
+                    scrapDevice(currentScrapDeviceId);
+                    hideScrapModal();
+                    showScrapSuccessModal();
                 }
             });
 
-            // معالجة إلغاء الجرد
-            document.getElementById('cancelInventory').addEventListener('click', hideInventoryConfirmModal);
-            document.getElementById('closeInventoryConfirmModal').addEventListener('click', hideInventoryConfirmModal);
+            // معالجة إلغاء التخريد
+            document.getElementById('cancelScrap').addEventListener('click', hideScrapModal);
+            document.getElementById('closeScrapModal').addEventListener('click', hideScrapModal);
 
-            // معالجة إغلاق نافذة نجاح الجرد
-            document.getElementById('closeInventorySuccess').addEventListener('click', hideInventorySuccessModal);
-            document.getElementById('inventorySuccessModal').addEventListener('click', function(e) {
+            // معالجة إغلاق نافذة نجاح التخريد
+            document.getElementById('closeScrapSuccess').addEventListener('click', hideScrapSuccessModal);
+            document.getElementById('scrapSuccessModal').addEventListener('click', function(e) {
                 if (e.target === this) {
-                    hideInventorySuccessModal();
+                    hideScrapSuccessModal();
                 }
             });
 
@@ -1013,8 +965,7 @@
                     model: model,
                     serial: serial,
                     status: status,
-                    employeeId: document.getElementById('new-device-user').value || '',
-                    central: document.getElementById('central-filter').value === 'all' ? 'سنترال 1' : document.getElementById('central-filter').value,
+                    user: document.getElementById('new-device-user').value || '',
                     notes: document.getElementById('new-device-notes').value
                 };
                 
@@ -1036,42 +987,18 @@
                 const user = document.getElementById('edit-device-user').value;
                 
                 if (!user) {
-                    alert('الرجاء إدخال رقم العامل');
+                    alert('الرجاء إدخال اسم المستخدم');
                     return;
                 }
                 
                 const deviceIndex = devicesData.findIndex(d => d.id === deviceId);
                 if (deviceIndex !== -1) {
                     devicesData[deviceIndex].status = status;
-                    devicesData[deviceIndex].employeeId = user;
+                    devicesData[deviceIndex].user = user;
                     displayInventory();
                 }
                 
                 hideEditDeviceModal();
-            });
-
-            // معالجة التخريد
-            document.getElementById('closeScrapModal').addEventListener('click', hideScrapModal);
-            document.getElementById('cancelScrap').addEventListener('click', hideScrapModal);
-
-            document.getElementById('scrapForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const receiptFile = document.getElementById('scrap-receipt').files[0];
-                if (!receiptFile) {
-                    alert('الرجاء إرفاق إيصال التخريد');
-                    return;
-                }
-
-                hideScrapModal();
-                scrapDevice(currentScrapDeviceId);
-                showScrapSuccessModal();
-            });
-
-            document.getElementById('closeScrapSuccess').addEventListener('click', hideScrapSuccessModal);
-            document.getElementById('scrapSuccessModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    hideScrapSuccessModal();
-                }
             });
 
             // معالجة زر مسح الباركود
@@ -1081,8 +1008,7 @@
 
             // معالجة تسجيل الخروج
             document.getElementById('admin-logout-btn').addEventListener('click', function() {
-                // يمكنك إضافة منطق تسجيل الخروج هنا
-                window.location.href = 'login.html';
+                window.location.href = 'index.html';
             });
 
             // معالجة اختيار ملف الإيصال
