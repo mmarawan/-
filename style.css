@@ -80,3 +80,28 @@ canvas {
     kerning: 2px;
     lighting-color: #8b5cf6;
 }
+
+#qr-reader {
+    width: 100%;
+    max-width: 600px;
+    height: 300px; /* Add fixed height */
+    margin: 0 auto;
+    border: 2px dashed #ccc;
+}
+
+#qr-reader__dashboard_section_csr {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#qr-reader__camera_permission_button {
+    background-color: #6d28d9;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 5px;
+    transition: background-color 0.3s;
+}

@@ -67,11 +67,13 @@
         <div id="admin-dashboard" class="min-h-screen bg-gray-100">
             <!-- Header -->
             <header class="bg-primary-800 text-white shadow-md">
-                <div class="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center text-center sm:text-right">
+                <div
+                    class="container mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center text-center sm:text-right">
                     <h1 class="text-xl sm:text-2xl font-bold mb-2 sm:mb-0">نظام إدارة العُهد الشخصية - لوحة التحكم</h1>
                     <div class="flex items-center space-x-2 sm:space-x-4 space-x-reverse">
                         <span class="text-sm">مرحباً، مسؤول الصيانة</span>
-                        <button id="admin-logout-btn" class="bg-primary-900 hover:bg-primary-950 px-3 py-1 rounded-md text-xs sm:text-sm transition duration-300">
+                        <button id="admin-logout-btn"
+                            class="bg-primary-900 hover:bg-primary-950 px-3 py-1 rounded-md text-xs sm:text-sm transition duration-300">
                             تسجيل الخروج
                         </button>
                     </div>
@@ -79,15 +81,21 @@
 
                 <!-- Navigation -->
                 <nav class="container mx-auto px-4 py-2">
-                    <ul class="flex flex-wrap justify-center sm:justify-start space-x-4 sm:space-x-6 space-x-reverse text-sm sm:text-base">
+                    <ul
+                        class="flex flex-wrap justify-center sm:justify-start space-x-4 sm:space-x-6 space-x-reverse text-sm sm:text-base">
                         <li class="mb-1 sm:mb-0">
-                            <button class="admin-nav-btn py-1 px-2 text-white border-b-2 border-white active" data-target="inventory">الجرد</button>
+                            <button class="admin-nav-btn py-1 px-2 text-white border-b-2 border-white active"
+                                data-target="inventory">الجرد</button>
                         </li>
                         <li class="mb-1 sm:mb-0">
-                            <button class="admin-nav-btn py-1 px-2 text-white opacity-70 hover:opacity-100 border-b-2 border-transparent" data-target="barcode">مسح الباركود</button>
+                            <button
+                                class="admin-nav-btn py-1 px-2 text-white opacity-70 hover:opacity-100 border-b-2 border-transparent"
+                                data-target="barcode">مسح الباركود</button>
                         </li>
                         <li class="mb-1 sm:mb-0">
-                            <button class="admin-nav-btn py-1 px-2 text-white opacity-70 hover:opacity-100 border-b-2 border-transparent" data-target="reports">التقارير والإحصائيات</button>
+                            <button
+                                class="admin-nav-btn py-1 px-2 text-white opacity-70 hover:opacity-100 border-b-2 border-transparent"
+                                data-target="reports">التقارير والإحصائيات</button>
                         </li>
                     </ul>
                 </nav>
@@ -100,9 +108,13 @@
                     <div class="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-4 sm:mb-6">
                         <div class="flex flex-col sm:flex-row justify-between items-center mb-3 sm:mb-4">
                             <h2 class="text-lg sm:text-xl font-bold text-primary-700 mb-3 sm:mb-4">إدارة الجرد</h2>
-                            <button id="add-inventory-btn" class="bg-primary-600 hover:bg-primary-700 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md transition duration-300 flex items-center text-sm sm:text-base">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                            <button id="add-inventory-btn"
+                                class="bg-primary-600 hover:bg-primary-700 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md transition duration-300 flex items-center text-sm sm:text-base">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5 ml-1"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                        clip-rule="evenodd" />
                                 </svg>
                                 إضافة جهاز جديدة
                             </button>
@@ -110,27 +122,39 @@
 
                         <!-- فلتر السنترال -->
                         <div class="mb-4">
-                            <label for="user-filter" class="block text-sm font-medium text-gray-700 mb-1">اختر المستخدم</label>
-                            <select id="user-filter" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm">
+                            <label for="central-filter" class="block text-sm font-medium text-gray-700 mb-1">اختر
+                                السنترال</label>
+                            <select id="central-filter"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm">
                                 <option value="all">الكل</option>
-                                <option value="أحمد محمد">أحمد محمد</option>
-                                <option value="محمد أحمد">محمد أحمد</option>
-                                <option value="علي محمود">علي محمود</option>
+                                <option value="سنترال1">سنترال1</option>
+                                <option value="سنترال2">سنترال2</option>
+                                <option value="سنترال3">سنترال3</option>
+                                <option value="سنترال4">سنترال4</option>
                             </select>
                         </div>
 
                         <div class="mb-3 sm:mb-4 flex items-center">
                             <div class="relative flex-grow">
-                                <input type="text" id="inventory-search" class="w-full px-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm" placeholder="ابحث برقم العامل أو الرقم التسلسلي...">
+                                <input type="text" id="inventory-search"
+                                    class="w-full px-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm"
+                                    placeholder="ابحث برقم العامل أو الرقم التسلسلي...">
                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                            clip-rule="evenodd" />
                                     </svg>
                                 </div>
                             </div>
-                            <button id="barcode-search-btn" class="mr-2 p-2 bg-gray-200 hover:bg-gray-300 rounded-md transition duration-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                            <button id="barcode-search-btn"
+                                class="mr-2 p-2 bg-gray-200 hover:bg-gray-300 rounded-md transition duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+                                        clip-rule="evenodd" />
                                 </svg>
                             </button>
                         </div>
@@ -139,6 +163,7 @@
                             <table class="min-w-full bg-white border border-gray-200 text-sm">
                                 <thead>
                                     <tr class="bg-gray-100">
+                                        <th class="py-2 px-3 sm:px-4 border-b text-right">الرقم العامل</th>
                                         <th class="py-2 px-3 sm:px-4 border-b text-right">اسم المستخدم</th>
                                         <th class="py-2 px-3 sm:px-4 border-b text-right">نوع الجهاز</th>
                                         <th class="py-2 px-3 sm:px-4 border-b text-right">الموديل</th>
@@ -157,35 +182,45 @@
                 </div>
 
                 <!-- نافذة التخريد -->
-                <div id="scrapModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4 sm:p-6 z-50 hidden">
+                <div id="scrapModal"
+                    class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4 sm:p-6 z-50 hidden">
                     <div class="bg-white rounded-lg shadow-xl w-full max-w-sm sm:max-w-md p-6 relative">
-                        <button id="closeScrapModal" class="absolute top-3 left-3 text-gray-500 hover:text-gray-700 text-2xl font-bold">
+                        <button id="closeScrapModal"
+                            class="absolute top-3 left-3 text-gray-500 hover:text-gray-700 text-2xl font-bold">
                             &times;
                         </button>
                         <div class="text-center mb-4">
                             <h3 class="text-xl font-bold text-primary-700">تخريد الجهاز</h3>
                             <div class="bg-gray-50 p-3 rounded-md border border-gray-200 mt-2 text-right">
                                 <p class="font-medium text-gray-700 mb-1">معلومات العهدة</p>
-                                <p><span class="text-gray-600">اسم المستخدم:</span> <span id="scrap-user-name"></span></p>
-                                <p><span class="text-gray-600">نوع الجهاز:</span> <span id="scrap-device-type"></span></p>
+                                <p><span class="text-gray-600">اسم المستخدم:</span> <span id="scrap-user-name"></span>
+                                </p>
+                                <p><span class="text-gray-600">نوع الجهاز:</span> <span id="scrap-device-type"></span>
+                                </p>
                                 <p><span class="text-gray-600">الموديل:</span> <span id="scrap-device-model"></span></p>
-                                <p><span class="text-gray-600">الرقم التسلسلي:</span> <span id="scrap-device-serial"></span></p>
+                                <p><span class="text-gray-600">الرقم التسلسلي:</span> <span
+                                        id="scrap-device-serial"></span></p>
                                 <p><span class="text-gray-600">الحالة:</span> <span id="scrap-device-status"></span></p>
                             </div>
                         </div>
 
                         <form id="scrapForm" class="space-y-4 text-sm">
                             <div>
-                                <label for="scrap-receipt" class="block text-gray-700 font-medium mb-1">إرفاق إيصال التخريد *</label>
-                                <input type="file" id="scrap-receipt" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500" required>
+                                <label for="scrap-receipt" class="block text-gray-700 font-medium mb-1">إرفاق إيصال
+                                    التخريد *</label>
+                                <input type="file" id="scrap-receipt"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                    required>
                                 <p class="text-xs text-gray-500 mt-1">يجب أن يكون الملف من نوع PDF, JPG, أو PNG</p>
                             </div>
 
                             <div class="flex justify-between mt-6 space-x-4 space-x-reverse">
-                                <button type="button" id="cancelScrap" class="w-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-md transition duration-300">
+                                <button type="button" id="cancelScrap"
+                                    class="w-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-md transition duration-300">
                                     إلغاء
                                 </button>
-                                <button type="submit" id="confirmScrap" class="w-1/2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">
+                                <button type="submit" id="confirmScrap"
+                                    class="w-1/2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">
                                     تأكيد التخريد
                                 </button>
                             </div>
@@ -194,16 +229,20 @@
                 </div>
 
                 <!-- نافذة نجاح التخريد -->
-                <div id="scrapSuccessModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4 sm:p-6 z-50 hidden">
+                <div id="scrapSuccessModal"
+                    class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4 sm:p-6 z-50 hidden">
                     <div class="bg-white rounded-lg shadow-xl w-full max-w-sm sm:max-w-md p-6 relative text-center">
                         <div class="mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-green-500" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
                             </svg>
                             <h3 class="text-xl font-bold text-primary-700 mt-2">تم التخريد بنجاح</h3>
                             <p class="text-sm text-gray-600 mt-1">تم حذف الجهاز من النظام</p>
                         </div>
-                        <button type="button" id="closeScrapSuccess" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-md transition duration-300">
+                        <button type="button" id="closeScrapSuccess"
+                            class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-md transition duration-300">
                             موافق
                         </button>
                     </div>
@@ -217,21 +256,39 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                             <div>
                                 <div id="qr-reader" class="w-full h-auto"></div>
-                                <p id="scanner-message" class="text-gray-600 mt-2 text-sm text-center">جاهز للمسح</p>
+                                <div class="flex justify-center mt-4 space-x-4 space-x-reverse">
+                                    <button id="start-scan-btn"
+                                        class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition duration-300">
+                                        بدء المسح
+                                    </button>
+                                    <button id="stop-scan-btn"
+                                        class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition duration-300 hidden">
+                                        إيقاف المسح
+                                    </button>
+                                </div>
+                                <p id="scanner-message" class="text-gray-600 mt-2 text-sm text-center">انقر على "بدء
+                                    المسح" لتفعيل الماسح الضوئي</p>
                             </div>
                             <div>
-                                <h3 class="text-base sm:text-lg font-bold text-gray-700 mb-2">معلومات الجهاز (بعد المسح):</h3>
+                                <h3 class="text-base sm:text-lg font-bold text-gray-700 mb-2">معلومات الجهاز (بعد
+                                    المسح):</h3>
                                 <div id="scanned-device-info" class="border rounded-md p-3 sm:p-4 bg-gray-50 text-sm">
-                                    <p><span class="font-medium">الرقم التسلسلي:</span> <span id="scanned-serial-number">-</span></p>
-                                    <p><span class="font-medium">نوع الجهاز:</span> <span id="scanned-device-type">-</span></p>
+                                    <p><span class="font-medium">الرقم التسلسلي:</span> <span
+                                            id="scanned-serial-number">-</span></p>
+                                    <p><span class="font-medium">نوع الجهاز:</span> <span
+                                            id="scanned-device-type">-</span></p>
                                     <p><span class="font-medium">الموديل:</span> <span id="scanned-model">-</span></p>
                                     <p><span class="font-medium">الحالة:</span> <span id="scanned-status">-</span></p>
-                                    <p><span class="font-medium">المستخدم الحالي:</span> <span id="scanned-current-user">-</span></p>
-                                    <div class="mt-3 sm:mt-4 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 space-x-reverse">
-                                        <button id="assign-device-btn" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-xs sm:text-sm transition duration-300">
+                                    <p><span class="font-medium">المستخدم الحالي:</span> <span
+                                            id="scanned-current-user">-</span></p>
+                                    <div
+                                        class="mt-3 sm:mt-4 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 space-x-reverse">
+                                        <button id="assign-device-btn"
+                                            class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-xs sm:text-sm transition duration-300">
                                             تخصيص لمستخدم
                                         </button>
-                                        <button id="update-status-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-md text-xs sm:text-sm transition duration-300">
+                                        <button id="update-status-btn"
+                                            class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-md text-xs sm:text-sm transition duration-300">
                                             تحديث الحالة
                                         </button>
                                     </div>
@@ -276,7 +333,8 @@
 
                             <!-- Device Type Distribution Chart -->
                             <div class="bg-white rounded-lg shadow-sm p-4 sm:p-6 border border-gray-200">
-                                <h3 class="text-base sm:text-lg font-bold text-primary-700 mb-3">توزيع الأجهزة حسب النوع</h3>
+                                <h3 class="text-base sm:text-lg font-bold text-primary-700 mb-3">توزيع الأجهزة حسب النوع
+                                </h3>
                                 <div class="chart-container" style="position: relative; height:250px; width:100%">
                                     <canvas id="deviceTypeChart"></canvas>
                                 </div>
@@ -287,15 +345,18 @@
                         <div class="space-y-3 sm:space-y-4 text-sm">
                             <div class="flex items-center justify-between border-b pb-2">
                                 <p class="text-gray-700">تقرير الأجهزة حسب القسم</p>
-                                <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded-md text-xs">توليد</button>
+                                <button
+                                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded-md text-xs">توليد</button>
                             </div>
                             <div class="flex items-center justify-between border-b pb-2">
                                 <p class="text-gray-700">تقرير بلاغات الأعطال حسب النوع</p>
-                                <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded-md text-xs">توليد</button>
+                                <button
+                                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded-md text-xs">توليد</button>
                             </div>
                             <div class="flex items-center justify-between border-b pb-2">
                                 <p class="text-gray-700">سجل تسليم واستلام العُهد</p>
-                                <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded-md text-xs">توليد</button>
+                                <button
+                                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded-md text-xs">توليد</button>
                             </div>
                         </div>
                     </div>
@@ -304,9 +365,11 @@
         </div>
 
         <!-- Add New Device Modal -->
-        <div id="addDeviceModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4 sm:p-6 z-50 hidden">
+        <div id="addDeviceModal"
+            class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4 sm:p-6 z-50 hidden">
             <div class="bg-white rounded-lg shadow-xl w-full max-w-sm sm:max-w-md p-6 relative">
-                <button id="closeAddDeviceModal" class="absolute top-3 left-3 text-gray-500 hover:text-gray-700 text-2xl font-bold">
+                <button id="closeAddDeviceModal"
+                    class="absolute top-3 left-3 text-gray-500 hover:text-gray-700 text-2xl font-bold">
                     &times;
                 </button>
                 <div class="text-center mb-4">
@@ -316,7 +379,8 @@
                 <form id="addDeviceForm" class="space-y-4 text-sm">
                     <div>
                         <label for="new-device-type" class="block text-gray-700 font-medium mb-1">نوع الجهاز</label>
-                        <select id="new-device-type" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <select id="new-device-type"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
                             <option value="">-- اختر نوع الجهاز --</option>
                             <option value="laptop">لابتوب</option>
                             <option value="desktop">جهاز مكتبي</option>
@@ -327,38 +391,72 @@
                     </div>
                     <div>
                         <label for="new-device-model" class="block text-gray-700 font-medium mb-1">الموديل</label>
-                        <input type="text" id="new-device-model" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="أدخل موديل الجهاز">
+                        <input type="text" id="new-device-model"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                            placeholder="أدخل موديل الجهاز">
                     </div>
                     <div>
-                        <label for="new-device-serial" class="block text-gray-700 font-medium mb-1">الرقم التسلسلي</label>
-                        <input type="text" id="new-device-serial" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="أدخل الرقم التسلسلي">
+                        <label for="new-device-serial" class="block text-gray-700 font-medium mb-1">الرقم
+                            التسلسلي</label>
+                        <input type="text" id="new-device-serial"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                            placeholder="أدخل الرقم التسلسلي">
                     </div>
                     <div>
                         <label for="new-device-status" class="block text-gray-700 font-medium mb-1">الحالة</label>
-                        <select id="new-device-status" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <select id="new-device-status"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
                             <option value="">-- اختر الحالة --</option>
                             <option value="in-use">مستخدم</option>
                             <option value="maintenance">تحت الصيانة</option>
                         </select>
                     </div>
                     <div>
-                        <label for="new-device-user" class="block text-gray-700 font-medium mb-1">المستخدم (اسم المستخدم)</label>
-                        <input type="text" id="new-device-user" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="أدخل اسم المستخدم الحالي (اختياري)">
+                        <label for="new-device-employee-id" class="block text-gray-700 font-medium mb-1">الرقم
+                            العامل</label>
+                        <input type="text" id="new-device-employee-id"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                            placeholder="أدخل الرقم العامل">
                     </div>
                     <div>
-                        <label for="new-device-receipt-date" class="block text-gray-700 font-medium mb-1">تاريخ الاستلام</label>
-                        <input type="date" id="new-device-receipt-date" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500" required>
+                        <label for="new-device-user" class="block text-gray-700 font-medium mb-1">المستخدم (اسم
+                            المستخدم)</label>
+                        <input type="text" id="new-device-user"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                            placeholder="أدخل اسم المستخدم الحالي (اختياري)">
                     </div>
                     <div>
-                        <label for="new-device-notes" class="block text-gray-700 font-medium mb-1">ملاحظات (اختياري)</label>
-                        <textarea id="new-device-notes" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="أضف أي ملاحظات إضافية"></textarea>
+                        <label for="new-device-central" class="block text-gray-700 font-medium mb-1">السنترال</label>
+                        <select id="new-device-central"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <option value="سنترال1">سنترال1</option>
+                            <option value="سنترال2">سنترال2</option>
+                            <option value="سنترال3">سنترال3</option>
+                            <option value="سنترال4">سنترال4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="new-device-receipt-date" class="block text-gray-700 font-medium mb-1">تاريخ
+                            الاستلام</label>
+                        <input type="date" id="new-device-receipt-date"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                            required>
+                    </div>
+                    <div>
+                        <label for="new-device-notes" class="block text-gray-700 font-medium mb-1">ملاحظات
+                            (اختياري)</label>
+                        <textarea id="new-device-notes" rows="3"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                            placeholder="أضف أي ملاحظات إضافية"></textarea>
                     </div>
 
                     <div class="flex justify-between mt-6 space-x-4 space-x-reverse">
-                        <button type="button" id="cancelAddDevice" class="w-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                        <button type="button" id="cancelAddDevice"
+                            class="w-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
                             إلغاء
                         </button>
-                        <button type="submit" id="saveNewDevice" class="w-1/2 bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                        <button type="submit" id="saveNewDevice"
+                            class="w-1/2 bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
                             حفظ
                         </button>
                     </div>
@@ -367,14 +465,16 @@
         </div>
 
         <!-- Edit Device Modal -->
-        <div id="editDeviceModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4 sm:p-6 z-50 hidden">
+        <!-- Edit Device Modal -->
+        <div id="editDeviceModal"
+            class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4 sm:p-6 z-50 hidden">
             <div class="bg-white rounded-lg shadow-xl w-full max-w-sm sm:max-w-md p-6 relative">
-                <button id="closeEditDeviceModal" class="absolute top-3 left-3 text-gray-500 hover:text-gray-700 text-2xl font-bold">
+                <button id="closeEditDeviceModal"
+                    class="absolute top-3 left-3 text-gray-500 hover:text-gray-700 text-2xl font-bold">
                     &times;
                 </button>
                 <div class="text-center mb-4">
                     <h3 class="text-xl font-bold text-primary-700">تعديل العهدة</h3>
-                    <p class="text-sm text-gray-600 mt-1">رقم العهدة: <span id="edit-device-id-display" class="font-medium"></span></p>
                 </div>
 
                 <form id="editDeviceForm" class="space-y-4 text-sm">
@@ -384,28 +484,53 @@
                         <p class="font-medium text-gray-700 mb-1">معلومات العهدة</p>
                         <p><span class="text-gray-600">النوع:</span> <span id="edit-device-type-display"></span></p>
                         <p><span class="text-gray-600">الموديل:</span> <span id="edit-device-model-display"></span></p>
-                        <p><span class="text-gray-600">الرقم التسلسلي:</span> <span id="edit-device-serial-display"></span></p>
+                        <p><span class="text-gray-600">الرقم التسلسلي:</span> <span
+                                id="edit-device-serial-display"></span></p>
+                    </div>
+
+                    <!-- التعديل هنا: تغيير التسمية -->
+                    <div>
+                        <label for="edit-device-employee-id" class="block text-gray-700 font-medium mb-1">المستخدم
+                            الجديد (رقم العامل) *</label>
+                        <input type="text" id="edit-device-employee-id"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                            placeholder="أدخل رقم العامل للمستخدم الجديد" required>
                     </div>
 
                     <div>
                         <label for="edit-device-status" class="block text-gray-700 font-medium mb-1">الحالة *</label>
-                        <select id="edit-device-status" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500" required>
+                        <select id="edit-device-status"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                            required>
                             <option value="in-use">مستخدم</option>
                             <option value="maintenance">تحت الصيانة</option>
                         </select>
                     </div>
 
+                    <!-- تم حذف حقل اسم المستخدم بالكامل -->
+
                     <div>
-                        <label for="edit-device-user" class="block text-gray-700 font-medium mb-1">اسم المستخدم *</label>
-                        <input type="text" id="edit-device-user" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500" placeholder="أدخل اسم المستخدم" required>
+                        <label for="edit-device-central" class="block text-gray-700 font-medium mb-1">السنترال *</label>
+                        <select id="edit-device-central"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
+                            required>
+                            <option value="سنترال1">سنترال1</option>
+                            <option value="سنترال2">سنترال2</option>
+                            <option value="سنترال3">سنترال3</option>
+                            <option value="سنترال4">سنترال4</option>
+                        </select>
                     </div>
 
                     <div>
-                        <label for="receipt-upload" class="block text-gray-700 font-medium mb-1">إرفاق إيصال الاستلام</label>
+                        <label for="receipt-upload" class="block text-gray-700 font-medium mb-1">إرفاق إيصال
+                            الاستلام</label>
                         <div class="flex items-center">
                             <input type="file" id="receipt-upload" class="hidden" accept=".pdf,.jpg,.jpeg,.png">
-                            <input type="text" id="receipt-file-name" class="flex-grow px-3 py-2 border border-gray-300 rounded-r-md text-sm" placeholder="لم يتم اختيار ملف" readonly>
-                            <button type="button" onclick="document.getElementById('receipt-upload').click()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-2 rounded-l-md border border-gray-300 text-sm">
+                            <input type="text" id="receipt-file-name"
+                                class="flex-grow px-3 py-2 border border-gray-300 rounded-r-md text-sm"
+                                placeholder="لم يتم اختيار ملف" readonly>
+                            <button type="button" onclick="document.getElementById('receipt-upload').click()"
+                                class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-2 rounded-l-md border border-gray-300 text-sm">
                                 اختر ملف
                             </button>
                         </div>
@@ -413,10 +538,12 @@
                     </div>
 
                     <div class="flex justify-between mt-6 space-x-4 space-x-reverse">
-                        <button type="button" id="cancelEditDevice" class="w-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                        <button type="button" id="cancelEditDevice"
+                            class="w-1/2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
                             إلغاء
                         </button>
-                        <button type="submit" id="saveEditedDevice" class="w-1/2 bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                        <button type="submit" id="saveEditedDevice"
+                            class="w-1/2 bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
                             حفظ التغييرات
                         </button>
                     </div>
@@ -439,29 +566,35 @@
         const devicesData = [
             {
                 id: '001',
+                employeeId: '1001',
                 type: 'laptop',
                 model: 'HP ProBook 450 G8',
                 serial: 'LT78945612',
                 status: 'in-use',
                 user: 'أحمد محمد',
+                central: 'سنترال1',
                 notes: ''
             },
             {
                 id: '002',
+                employeeId: '1002',
                 type: 'desktop',
                 model: 'Dell OptiPlex 7080',
                 serial: 'PC45678923',
                 status: 'in-use',
                 user: 'محمد أحمد',
+                central: 'سنترال2',
                 notes: ''
             },
             {
                 id: '003',
+                employeeId: '1003',
                 type: 'printer',
                 model: 'HP LaserJet Pro M404dn',
                 serial: 'PR12345678',
                 status: 'maintenance',
                 user: 'علي محمود',
+                central: 'سنترال3',
                 notes: 'تحت الصيانة'
             }
         ];
@@ -491,6 +624,7 @@
                 }
 
                 row.innerHTML = `
+                    <td class="py-2 px-3 sm:px-4 border-b">${device.employeeId || '---'}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">${device.user || '---'}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">${getDeviceTypeName(device.type)}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">${device.model}</td>
@@ -530,14 +664,14 @@
             return types[type] || type;
         }
 
-        // فلترة حسب المستخدم
-        document.getElementById('user-filter').addEventListener('change', function() {
-            const selectedUser = this.value;
-            if (selectedUser === 'all') {
+        // فلترة حسب السنترال
+        document.getElementById('central-filter').addEventListener('change', function () {
+            const selectedCentral = this.value;
+            if (selectedCentral === 'all') {
                 displayInventory();
             } else {
-                const filteredDevices = devicesData.filter(device => 
-                    device.user && device.user.includes(selectedUser)
+                const filteredDevices = devicesData.filter(device =>
+                    device.central && device.central.includes(selectedCentral)
                 );
                 renderFilteredInventory(filteredDevices);
             }
@@ -545,11 +679,12 @@
 
         function renderFilteredInventory(filteredDevices, searchTerm = '') {
             inventoryTableBody.innerHTML = '';
-            
+
             if (searchTerm) {
-                filteredDevices = filteredDevices.filter(device => 
-                    (device.user && device.user.includes(searchTerm)) || 
-                    (device.serial && device.serial.includes(searchTerm))
+                filteredDevices = filteredDevices.filter(device =>
+                    (device.user && device.user.includes(searchTerm)) ||
+                    (device.serial && device.serial.includes(searchTerm)) ||
+                    (device.employeeId && device.employeeId.includes(searchTerm))
                 );
             }
 
@@ -573,6 +708,7 @@
                 }
 
                 row.innerHTML = `
+                    <td class="py-2 px-3 sm:px-4 border-b">${device.employeeId || '---'}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">${device.user || '---'}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">${getDeviceTypeName(device.type)}</td>
                     <td class="py-2 px-3 sm:px-4 border-b">${device.model}</td>
@@ -600,13 +736,13 @@
         }
 
         // البحث عن الأجهزة
-        document.getElementById('inventory-search').addEventListener('input', function(e) {
+        document.getElementById('inventory-search').addEventListener('input', function (e) {
             const searchTerm = e.target.value.toLowerCase();
-            const selectedUser = document.getElementById('user-filter').value;
-            
-            let filteredDevices = selectedUser === 'all' ? devicesData : 
-                devicesData.filter(d => d.user && d.user.includes(selectedUser));
-            
+            const selectedCentral = document.getElementById('central-filter').value;
+
+            let filteredDevices = selectedCentral === 'all' ? devicesData :
+                devicesData.filter(d => d.central && d.central.includes(selectedCentral));
+
             renderFilteredInventory(filteredDevices, searchTerm);
         });
 
@@ -614,14 +750,13 @@
         function showScrapModal(deviceId) {
             currentScrapDeviceId = deviceId;
             const device = devicesData.find(d => d.id === deviceId);
-            
+
             if (device) {
-                document.getElementById('scrap-device-id').textContent = device.id;
                 document.getElementById('scrap-user-name').textContent = device.user || '---';
                 document.getElementById('scrap-device-type').textContent = getDeviceTypeName(device.type);
                 document.getElementById('scrap-device-model').textContent = device.model;
                 document.getElementById('scrap-device-serial').textContent = device.serial;
-                
+
                 let statusText;
                 switch (device.status) {
                     case 'in-use': statusText = 'مستخدم'; break;
@@ -630,7 +765,7 @@
                 }
                 document.getElementById('scrap-device-status').textContent = statusText;
             }
-            
+
             document.getElementById('scrapModal').classList.remove('hidden');
         }
 
@@ -661,18 +796,23 @@
             document.getElementById('addDeviceForm').reset();
         }
 
+
+        // عرض نموذج تعديل جهاز
         // عرض نموذج تعديل جهاز
         function showEditDeviceModal(deviceId) {
             currentEditDeviceId = deviceId;
             const device = devicesData.find(d => d.id === deviceId);
-            
+
             if (device) {
-                document.getElementById('edit-device-id-display').textContent = device.id;
+                // تمت إزالة السطر التالي الذي كان يعرض رقم العهدة
+                // document.getElementById('edit-device-id-display').textContent = device.id;
+
                 document.getElementById('edit-device-type-display').textContent = getDeviceTypeName(device.type);
                 document.getElementById('edit-device-model-display').textContent = device.model;
                 document.getElementById('edit-device-serial-display').textContent = device.serial;
                 document.getElementById('edit-device-status').value = device.status;
-                document.getElementById('edit-device-user').value = device.user || '';
+                document.getElementById('edit-device-employee-id').value = device.employeeId || '';
+                document.getElementById('edit-device-central').value = device.central || 'سنترال1';
                 document.getElementById('editDeviceModal').classList.remove('hidden');
             }
         }
@@ -770,14 +910,14 @@
                 if (device) {
                     document.getElementById('scanned-device-type').textContent = getDeviceTypeName(device.type);
                     document.getElementById('scanned-model').textContent = device.model;
-                    
+
                     let statusText;
                     switch (device.status) {
                         case 'in-use': statusText = 'مستخدم'; break;
                         case 'maintenance': statusText = 'تحت الصيانة'; break;
                         default: statusText = 'غير معروف';
                     }
-                    
+
                     document.getElementById('scanned-status').textContent = statusText;
                     document.getElementById('scanned-current-user').textContent = device.user || '---';
                 } else {
@@ -889,12 +1029,12 @@
         }
 
         // تهيئة الصفحة عند التحميل
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // عرض الأجهزة
             displayInventory();
 
             // معالجة النقر على أزرار الجرد
-            document.addEventListener('click', function(e) {
+            document.addEventListener('click', function (e) {
                 if (e.target.classList.contains('scrap-btn')) {
                     const deviceId = e.target.closest('tr').getAttribute('data-device-id');
                     showScrapModal(deviceId);
@@ -912,7 +1052,7 @@
             });
 
             // معالجة تأكيد التخريد
-            document.getElementById('confirmScrap').addEventListener('click', function(e) {
+            document.getElementById('confirmScrap').addEventListener('click', function (e) {
                 e.preventDefault();
                 const receiptFile = document.getElementById('scrap-receipt').files[0];
                 if (!receiptFile) {
@@ -933,7 +1073,7 @@
 
             // معالجة إغلاق نافذة نجاح التخريد
             document.getElementById('closeScrapSuccess').addEventListener('click', hideScrapSuccessModal);
-            document.getElementById('scrapSuccessModal').addEventListener('click', function(e) {
+            document.getElementById('scrapSuccessModal').addEventListener('click', function (e) {
                 if (e.target === this) {
                     hideScrapSuccessModal();
                 }
@@ -945,30 +1085,35 @@
             document.getElementById('cancelAddDevice').addEventListener('click', hideAddDeviceModal);
 
             // معالجة حفظ الجهاز الجديد
-            document.getElementById('addDeviceForm').addEventListener('submit', function(e) {
+            document.getElementById('addDeviceForm').addEventListener('submit', function (e) {
                 e.preventDefault();
-                
+
                 const type = document.getElementById('new-device-type').value;
                 const model = document.getElementById('new-device-model').value;
                 const serial = document.getElementById('new-device-serial').value;
                 const status = document.getElementById('new-device-status').value;
+                const employeeId = document.getElementById('new-device-employee-id').value;
+                const user = document.getElementById('new-device-user').value;
+                const central = document.getElementById('new-device-central').value;
                 const receiptDate = document.getElementById('new-device-receipt-date').value;
-                
-                if (!type || !model || !serial || !status || !receiptDate) {
+
+                if (!type || !model || !serial || !status || !receiptDate || !employeeId) {
                     alert('الرجاء ملء جميع الحقول المطلوبة');
                     return;
                 }
-                
+
                 const newDevice = {
                     id: '00' + (devicesData.length + 1),
                     type: type,
                     model: model,
                     serial: serial,
                     status: status,
-                    user: document.getElementById('new-device-user').value || '',
+                    employeeId: employeeId,
+                    user: user || '',
+                    central: central,
                     notes: document.getElementById('new-device-notes').value
                 };
-                
+
                 devicesData.push(newDevice);
                 displayInventory();
                 hideAddDeviceModal();
@@ -979,47 +1124,50 @@
             document.getElementById('cancelEditDevice').addEventListener('click', hideEditDeviceModal);
 
             // معالجة حفظ التعديلات
-            document.getElementById('editDeviceForm').addEventListener('submit', function(e) {
+            document.getElementById('editDeviceForm').addEventListener('submit', function (e) {
                 e.preventDefault();
-                
+
                 const deviceId = currentEditDeviceId;
                 const status = document.getElementById('edit-device-status').value;
-                const user = document.getElementById('edit-device-user').value;
-                
-                if (!user) {
-                    alert('الرجاء إدخال اسم المستخدم');
+                const employeeId = document.getElementById('edit-device-employee-id').value;
+                const central = document.getElementById('edit-device-central').value;
+
+                if (!employeeId) {
+                    alert('الرجاء إدخال جميع الحقول المطلوبة');
                     return;
                 }
-                
+
                 const deviceIndex = devicesData.findIndex(d => d.id === deviceId);
                 if (deviceIndex !== -1) {
                     devicesData[deviceIndex].status = status;
-                    devicesData[deviceIndex].user = user;
+                    devicesData[deviceIndex].employeeId = employeeId;
+                    devicesData[deviceIndex].central = central;
+                    // تمت إزالة تحديث اسم المستخدم
                     displayInventory();
                 }
-                
+
                 hideEditDeviceModal();
             });
 
             // معالجة زر مسح الباركود
-            document.getElementById('barcode-search-btn').addEventListener('click', function() {
+            document.getElementById('barcode-search-btn').addEventListener('click', function () {
                 switchAdminSection('barcode');
             });
 
             // معالجة تسجيل الخروج
-            document.getElementById('admin-logout-btn').addEventListener('click', function() {
+            document.getElementById('admin-logout-btn').addEventListener('click', function () {
                 window.location.href = 'index.html';
             });
 
             // معالجة اختيار ملف الإيصال
-            document.getElementById('receipt-upload').addEventListener('change', function(e) {
+            document.getElementById('receipt-upload').addEventListener('change', function (e) {
                 const fileName = e.target.files[0] ? e.target.files[0].name : 'لم يتم اختيار ملف';
                 document.getElementById('receipt-file-name').value = fileName;
             });
 
             // مراقبة قسم التقارير لعرض المخططات عند الحاجة
-            const observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
+            const observer = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
                     if (mutation.attributeName === 'class') {
                         const reportsSection = document.getElementById('reports-section');
                         if (reportsSection.classList.contains('active')) {
@@ -1040,4 +1188,5 @@
         });
     </script>
 </body>
+
 </html>
